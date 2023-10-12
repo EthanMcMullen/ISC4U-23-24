@@ -133,9 +133,6 @@ body {
 .driver img {
     max-width: 100%;
     height: auto;
-    .redbull {
-        border-bottom: 25px red solid; 
-    }
 }
 
 footer {
@@ -148,21 +145,32 @@ footer {
     margin-top: 150px;
 }
 
-.driver .redbull {border-bottom: 25px darkblue solid; background-color: #00008baa; border-radius: 15px;}
-.driver .mercedes {border-bottom: 25px turquoise solid; background-color: #40e0d022; border-radius: 15px;}
-.driver .astonmartin {border-bottom: 25px darkgreen solid; background-color: #00ff00aa; border-radius: 15px;}
-.driver .ferrari {border-bottom: 25px red solid; background-color: #ff0000aa; border-radius: 15px;}
-.driver .mclaren {border-bottom: 25px darkorange solid; background-color: #ffa500aa; border-radius: 15px;}
-.driver .alpine {border-bottom: 25px lightblue solid; background-color: #add8e633; border-radius: 15px;}
-.driver .haas {border-bottom: 25px white solid; background-color: #ffffff; border-radius: 15px;}
-.driver .alfaromeo {border-bottom: 25px black solid; background-color: #333333; border-radius: 15px;}
-.driver .williams {border-bottom: 25px blue solid; background-color: #0000ffaa; border-radius: 15px;}
-.driver .alphatauri {border-bottom: 25px darkgray solid; background-color: #a9a9a966; border-radius: 15px;}
+.driver .redbull {border-bottom: 25px darkblue solid; background-color: #00008baa; border-radius: 15px 15px 0px 0px;}
+.driver .mercedes {border-bottom: 25px turquoise solid; background-color: #40e0d022; border-radius: 15px 15px 0px 0px;}
+.driver .astonmartin {border-bottom: 25px darkgreen solid; background-color: #00ff00aa; border-radius: 15px 15px 0px 0px;}
+.driver .ferrari {border-bottom: 25px red solid; background-color: #ff0000aa; border-radius: 15px 15px 0px 0px;}
+.driver .mclaren {border-bottom: 25px darkorange solid; background-color: #ffa500aa; border-radius: 15px 15px 0px 0px;}
+.driver .alpine {border-bottom: 25px lightblue solid; background-color: #add8e633; border-radius: 15px 15px 0px 0px;}
+.driver .haas {border-bottom: 25px white solid; background-color: #ffffff; border-radius: 15px 15px 0px 0px;}
+.driver .alfaromeo {border-bottom: 25px black solid; background-color: #333333; border-radius: 15px 15px 0px 0px;}
+.driver .williams {border-bottom: 25px blue solid; background-color: #0000ffaa; border-radius: 15px 15px 0px 0px;}
+.driver .alphatauri {border-bottom: 25px darkgray solid; background-color: #a9a9a966; border-radius: 15px 15px 0px 0px;}
 
+.driver a {
+    text-decoration: none;
+    color: black;
+}
+
+.driver:hover {
+    transform: scale(1.05);
+}
+.driver .name{
+    text-align: center;
+}
 
 .driver {
     border: 2px black solid;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px;
     margin: 10px;
     margin-top: 30px;
 }
@@ -173,9 +181,30 @@ footer {
 
 .team {
     display: flex; 
-    justify-content: space-between;
-    padding: 20px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 2px black dotted;
 }
+
+.team .teamstat {
+    flex: 1;
+    text-align: center;
+}
+
+.team .drivername{
+    flex: 2;
+    justify-content: center;
+}
+.team .log {
+    align-items: center;
+}
+.team .logo img {
+    height: 100px;
+    width: auto;
+}
+
+
 
 .teamtitle {
     display: flex;
@@ -184,22 +213,46 @@ footer {
     font-weight: bold;
 }
 
-.redbullteam {background-color: darkblue; color: white; border-radius: 15px; margin: 30px; border: 5px black solid; } .redbullteam:hover {transform: scale(1.033)}
-.mercedesteam {background-color: turquoise; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .mercedesteam:hover {transform: scale(1.033)}
-.astonmartonteam {background-color: darkgreen; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .astonmartonteam:hover {transform: scale(1.033)}
-.ferrariteam {background-color: red; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .ferrariteam:hover {transform: scale(1.033)}
-.mclarenteam {background-color: darkorange; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .mclarenteam:hover {transform: scale(1.033)}
-.alpineteam {background-color: lightblue; color: black; border-radius: 15px; margin: 30px; border: 5px black solid} .alpineteam:hover {transform: scale(1.033)}
-.haasteam {background-color: white; color: black; border-radius: 15px; margin: 30px; border: 5px black solid} .haasteam:hover {transform: scale(1.033)}
-.alfaromeoteam {background-color: black; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .alfaromeoteam:hover {transform: scale(1.033)}
-.williamsteam {background-color: blue; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .williamsteam:hover {transform: scale(1.033)}
-.alphatauriteam {background-color: darkgray; color: black; border-radius: 15px; margin: 30px; border: 5px black solid} .alphatauriteam:hover {transform: scale(1.033)}
+.redbullteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid; } .teams .redbullteam:hover {background-color: darkblue; color: white;}
+.mercedesteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .mercedesteam:hover {background-color: turquoise;}
+.astonmartonteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .astonmartonteam:hover {background-color: darkgreen;}
+.ferrariteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .ferrariteam:hover {background-color: red;}
+.mclarenteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .mclarenteam:hover {background-color: darkorange;}
+.alpineteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .alpineteam:hover {background-color: lightblue;}
+.haasteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .haasteam:hover {background-color: white;}
+.alfaromeoteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .alfaromeoteam:hover {background-color: black; color: white;}
+.williamsteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .williamsteam:hover {background-color: blue;}
+.alphatauriteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .alphatauriteam:hover {background-color: darkgray;}
 
 a:hover {
     transform: scale(1.05);
 }
 
+.storepage  {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.item:nth-child(2), 
+.item:nth-child(3) {
+        grid-template-columns: 1fr 2fr; 
+    }
 
+.item:nth-child(4), 
+.item:nth-child(5) {
+        grid-template-columns: 2fr 1fr; 
+    }
+
+.storepage .item {
+    background-color: lightblue;
+    border: black 2px solid;
+    height: 500px;
+    margin: 10px;
+}
+
+.storepage .image {
+
+}
+ 
 @media (max-width: 768px) {
     header .item {
         flex-direction: row;
