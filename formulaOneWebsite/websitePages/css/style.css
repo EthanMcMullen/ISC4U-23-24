@@ -78,9 +78,6 @@ body {
     gap: 10px;
 }
 
-.driver {
-    text-decoration: none;
-}
 
 .image-grid-driver {
     display: grid;
@@ -94,7 +91,9 @@ body {
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
     align-items: center;
-    gap: 100px;
+    gap: 200px;
+    margin-left: 500px;
+    margin-right: 500px;
 }
 
 .RaceStats {
@@ -142,7 +141,6 @@ footer {
     justify-content: center;
     text-align: center;
     border-top: 10px black solid;
-    margin-top: 150px;
 }
 
 .driver .redbull {border-bottom: 25px darkblue solid; background-color: #00008baa; border-radius: 15px 15px 0px 0px;}
@@ -182,26 +180,26 @@ footer {
 .team {
     display: flex; 
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: 2px black dotted;
 }
 
 .team .teamstat {
     flex: 1;
     text-align: center;
+    font-size: 10px;
 }
 
 .team .drivername{
     flex: 2;
     justify-content: center;
+    font-size: 10px;
 }
 .team .log {
     align-items: center;
 }
 .team .logo img {
-    height: 100px;
-    width: auto;
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
 }
 
 
@@ -215,13 +213,13 @@ footer {
 
 .redbullteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid; } .teams .redbullteam:hover {background-color: darkblue; color: white;}
 .mercedesteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .mercedesteam:hover {background-color: turquoise;}
-.astonmartonteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .astonmartonteam:hover {background-color: darkgreen;}
+.astonmartonteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .astonmartonteam:hover {background-color: darkgreen; color: white;}
 .ferrariteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .ferrariteam:hover {background-color: red;}
 .mclarenteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .mclarenteam:hover {background-color: darkorange;}
 .alpineteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .alpineteam:hover {background-color: lightblue;}
 .haasteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .haasteam:hover {background-color: white;}
 .alfaromeoteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .alfaromeoteam:hover {background-color: black; color: white;}
-.williamsteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .williamsteam:hover {background-color: blue;}
+.williamsteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .williamsteam:hover {background-color: blue; color: white;}
 .alphatauriteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .alphatauriteam:hover {background-color: darkgray;}
 
 a:hover {
@@ -231,29 +229,89 @@ a:hover {
 .storepage  {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    text-decoration: none;
+    
 }
-.item:nth-child(2), 
-.item:nth-child(3) {
-        grid-template-columns: 1fr 2fr; 
-    }
 
-.item:nth-child(4), 
-.item:nth-child(5) {
-        grid-template-columns: 2fr 1fr; 
-    }
+.storepage :nth-child(2) {
+    background-color: white;
+    border-bottom: 2px black solid;
+}
 
-.storepage .item {
-    background-color: lightblue;
-    border: black 2px solid;
+.storepage :nth-child(3) {
+    background-color: pink;
+    border-bottom: 2px black solid;
+    padding-left: 50px;
+}
+
+.storepage :nth-child(4) {
+    padding-top: 50px;
+    padding-bottom: 50px;
     height: 500px;
-    margin: 10px;
 }
 
-.storepage .image {
-
+.storepage :nth-child(5) {
+    padding-left: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
+
+.storepage :nth-child(6) {
+    background-color: white;
+    padding-right: 50px;
+}
+
+
+.storepage  {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.storepage .hats {
+    background-color: white;
+    border-bottom: 2px black solid;
+}
+.storepage .hats img {
+    width: 50%;
+    height: auto;
+    padding-left: 100px;
+}
+
+.storepage .text {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  font-size: 35px;
+}
+
+.text a{
+    text-decoration: none;
+}
+
+.storepage .shirts {
+    background-color: pink;
+    border-bottom: 2px black solid;
+}
+
+.storepage .shirts img {
+    height: 100%;
+    width: auto;
+}
+
+
+
+.storepage .hoodies {
+    background-color: white;
+}
+
+.storepage .hoodie img {
+    width: 50%;
+    height: auto;
+}
+
+
  
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     header .item {
         flex-direction: row;
         font-size: 20px;
@@ -271,21 +329,21 @@ a:hover {
     }
 
     .navbar .item {
-        padding-left: 50%;
-        padding-right: 50%;
         padding-bottom: 10px;
         padding-top: 10px;
         border-bottom: 2px black dotted;
         border-left: none;
         border-right: none;
     }
+
     footer {
         font-size: 10px;
     }
+
     .image-grid-driver {
         grid-template-columns: repeat(1, 1fr);
-      
     }
+
     .image-grid-driver-team {
         grid-template-columns: repeat(1, 1fr);       
     }
@@ -295,6 +353,10 @@ a:hover {
 
     }
 
+    .navbar {
+        width: 100%;
+    }
+
     .RaceStats {
         display: flex;
         flex-direction: none;
@@ -302,6 +364,10 @@ a:hover {
         align-items: center;
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    .team .drivername{
+        display:none;
     }
     
 }
