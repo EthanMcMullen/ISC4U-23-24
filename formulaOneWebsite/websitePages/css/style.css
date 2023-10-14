@@ -213,7 +213,7 @@ footer { /* Defines Colour, Height, And sets the text to the middle of the foote
     margin-bottom: 20px;
 }
 
-.graphLabel {
+.graphLabel { /* changes the font size and centers the graph label on top of the race stats graph */
     font-size: 50px;
     margin-left: 15%;
 }
@@ -258,12 +258,17 @@ footer { /* Defines Colour, Height, And sets the text to the middle of the foote
     margin-right: 15%;
 }
 
+.image-grid-driver-team a { /* Hides underlines underneath the individual teams driver cards. also makes it black. */
+    text-decoration: none;
+    color: black;
+}
+
 .image-grid-driver-team .driver { /* The grid that stores the two drivers of each team */
     margin-left: 100px;
     margin-right: 100px;
 }
 
-.teamtitle {
+.teamtitle { /* Centers the team title in the center of the page */
     width: 100%;
     align-items: center;
     text-align: center;
@@ -562,6 +567,10 @@ footer { /* Defines Colour, Height, And sets the text to the middle of the foote
 
     }
 
+    .driver .name { /* Decreases the text to fit on smaller screens */
+        font-size: 8px;
+    }
+
     /* End Drivers Championship */
 
 
@@ -575,8 +584,12 @@ footer { /* Defines Colour, Height, And sets the text to the middle of the foote
 
     /* Constructors Championship */
 
-    .team .drivername{
+    .team .drivername{ /* Stops Displaying Driver Names in Small Screens */
         display:none;
+    }
+
+    .team .teamstat { /* decreases the text to fit on smaller screens */
+        font-size: 8px;
     }
 
     /* End Constructors Championship*/
@@ -591,11 +604,11 @@ footer { /* Defines Colour, Height, And sets the text to the middle of the foote
 
     /* Individual Driver Pages */
 
-    .image-grid-driver {
+    .image-grid-driver { /* Makes individual driver pages 1 column big instead of two */
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .RaceStats {
+    .RaceStats { /* Changes race states to be centered in small mode*/
         display: flex;
         flex-direction: none;
         justify-content: space-between;
@@ -606,6 +619,10 @@ footer { /* Defines Colour, Height, And sets the text to the middle of the foote
 
     .race { /* This is each row of the race stats chart*/
         margin-left: 0%;    
+    }
+
+    .graphLabel { /* Centeres the graph label in the middle of the page when smaller*/
+        margin-left: 0;
     }
 
     /* End Individual Driver Pages */
@@ -643,35 +660,43 @@ footer { /* Defines Colour, Height, And sets the text to the middle of the foote
 
     /* Home Page */
 
-    .storewebsite img {
+    .storewebsite img { /* Stops Displaying the Store Image */
         display:none;
         width: 0px;
     }
     
-    .storewebsite { 
+    .storewebsite { /* Puts the hometext in the middle on the store website part of the home page. overrides the previous grid layout. */
         display: flex;
         text-align: center;
         align-items: center;
         justify-content: center;
     }
 
-    .hometext { 
+    .hometext {  /* Aligns the text in the hometext object in center and gets rid of all padding */ 
         text-align: center;
         padding-right: 0px;
         padding-left: 0px;
     }
 
-    .driverwebsite img {
+    .driverwebsite img { /* Stops Displaying the Driver Championship Image */
         display: none;
         width: 0px;
     }
     
-    .driverwebsite { 
+    .driverwebsite { /* Makes driver website 1 column wide, hiding the image grid that isnt being displayed*/
         grid-template-columns: 1fr;
     }
-    .driverhometext { 
+
+    .youtubewebsite .hometext { /* Hides the hometext so that you just see the youtube logo */
+        display: none;
+        width: 0px;
+    }
+
+    .youtubewebsite { /* Centers the youtube logo */
+        display: flex;
         text-align: center;
-        padding-left: 0px;
+        align-items: center;
+        justify-content: center;
     }
 
     /* End Home Page */
@@ -688,21 +713,36 @@ footer { /* Defines Colour, Height, And sets the text to the middle of the foote
     /* Store Page */
 
     
-    .storepage {
+    .storepage { /* Changes the storepage to be 1 column wide */
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .storepage :nth-child(2) {
+    .storepage :nth-child(2) { /* adds padding the the hat text*/
         padding-left: 50px;
     }
 
-    .storepage :nth-child(6) {
+    .storepage :nth-child(6) { /* adds padding to the hoodie text */
         padding-left: 50px;
     }
 
-    .storepage .text {
+    .storepage .text { /* changes the font to make it fit on smaller screens */
         font-size: 25px;
     }
+
+    .storepage :nth-child(1) { /* Moves Hat Image to the center */
+        display: flex;
+        justify-content: center;
+    }
+    .storepage :nth-child(4) { /* Moves Shirt Image to the center */
+        display: flex;
+        justify-content: center;
+    }
+    .storepage :nth-child(5) { /* Moves Hoodie Image to the center */
+        display: flex;
+        justify-content: center;
+    }
+    
+  
 
     /* End Store Page */
 }

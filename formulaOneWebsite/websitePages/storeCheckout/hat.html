@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--EACH PAGE IN STORE CHECKOUT IS THE SAME, COMMENTS FOR THIS PAGE APPLY IN THE SAME WAY AS THE OTHER PAGES-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,14 +14,14 @@
     </head>
     <body>
         <header>
-            <div class="container">
+            <div class="container"> <!--Contains the Header-->
                 <div class="logo"><img src="../Images/f1Logo.png" alt="Image 1"></div>
                 <div class="item">Store Checkout</div>
             </div>
         </header> 
         <nav>
             <div class="container">
-                <div class="navbar">    
+                <div class="navbar"> <!--Contains the Navbar-->    
                     <div class="item"><a href="../home.html">Home</a></div>
                     <div class="item"><a href="../constructors.html">Constructors Championship</a></div>
                     <div class="item"><a href="../drivers.html">Drivers Championship</a></div>               
@@ -29,11 +29,11 @@
                 </div>
             </div>
         </nav>   
-        <form class="checkoutform" action="">
+        <form class="checkoutform" action=""> <!--Form Called Checkout Form-->
         <h2>Formula One Hats</h2>
         <div>
             <label>Select your Team / Driver</label>
-            <select name="Type Of Hat">
+            <select name="Type Of Hat"> <!--Drop down menu to enter which driver themed merch you want-->
                 <option value="Verstappen / RedBull">Verstappen / Redbull</option>
                 <option value="Perez / RedBull">Perez / RedBull</option>
                 <option value="Hamilton / Mercedes">Hamilton / Mercedes</option>
@@ -59,24 +59,24 @@
         <br>
         <h2>Contact Information</h2>
         <div>
-            <label>Email</label>
+            <label>Email</label> <!--Input for Email-->
             <input type="text" name="email" placeholder="Enter Email">
         </div>
         <br>
         <div>
-            <label>Full Name</label>
+            <label>Full Name</label> <!--Input For Name-->
             <input type="text" name="fullname" placeholder="E.g. John Doe">
         </div>
         <br>
         <div>
-            <label>Phone Number</label>
+            <label>Phone Number</label> <!--Input for Phone Number-->
             <input type="text" name="phonenumber" placeholder="XXX-XXX-XXXX">
         </div>
         <br>
         <h2>Payment</h2>
         <h3>Shipping Information</h3>
         <div>
-            <label>Country</label>
+            <label>Country</label> <!--Drop Down Menu for Country, only Canada US and UK-->
             <select name="Country Of Residence">
                 <option value="Verstappen / RedBull">Canada</option>
                 <option value="Perez / RedBull">United States</option>
@@ -85,41 +85,41 @@
         </div>
         <br>
         <div>
-            <label>Province / Territory / State / County</label>
+            <label>Province / Territory / State / County</label> <!--Province Territory State or county input, you need all those because we put uk us and canada above-->
             <input type="text" name="territory" placeholder="Enter Province / Territory / State / County">
         </div>
         <br>
         <div>
-            <label>City</label>
+            <label>City</label> <!--Input for CIty-->
             <input type="text" name="city" placeholder="Enter City">
         </div>
         <br>
         <div>
-            <label>Postal Code</label>
+            <label>Postal Code</label> <!--Input for Postal Code-->
             <input type="text" name="postal" placeholder="Enter Postal Code">
         </div>
         <br>
         <div>
-            <label>Shipping Address</label>
+            <label>Shipping Address</label> <!--Input for Shipping Adresss-->
             <input type="text" name="address" placeholder="Enter Adresss">
         </div>
         <br>
         <h3>Payment Details</h3>
         <div>
-            <label>Credit Card Number</label>
+            <label>Credit Card Number</label> <!--Input for Credit Card Number-->
             <input type="text" name="cardnumber" placeholder="Enter Adresss">
         </div>
         <br>
         <div>
-            <label>CVV</label>
+            <label>CVV</label> <!--Input for CVV-->
             <input type="text" name="cvv" placeholder="Enter Adresss">
         </div>
         <br>
         <div>
-            <label>Expiry Date</label>
+            <label>Expiry Date</label> <!--Input For Expiry Date-->
             <input type="text" name="expirydate" placeholder="Enter Adresss">
         </div>
-        <br>
+        <br> <!--Button To Submit and Proceed to Checkout (Obviously doesnt work)-->
             <input class="button" type="submit" value="Proceed to Checkout" name="">
     </form>  
 </body>
