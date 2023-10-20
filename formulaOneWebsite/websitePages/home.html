@@ -8,14 +8,14 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="container"> <!--Contains the Header-->
             <div class="logo"><img src="Images/f1Logo.png" alt="Image 1"></div>
             <div class="item">Home Page</div>
         </div>
     </header> 
     <nav>
         <div class="container">
-            <div class="navbar">    
+            <div class="navbar"> <!--Contains the Navbar-->    
                 <div class="item"><a href="home.html">Home</a></div>
                 <div class="item"><a href="constructors.html">Constructors Championship</a></div>
                 <div class="item"><a href="drivers.html">Drivers Championship</a></div>               
@@ -23,7 +23,45 @@
             </div>
         </div>
     </nav>   
-    
+    <div class="homepageelements"> <!--A class to hold every link in the home page, mainly to remove links-->
+        <a href="https://f1tv.formula1.com/"><div class="realwebsite"> <!--First link to f1 tv-->
+            <h1>Watch Grand prix, Qualifying and Sprint Races right when they happen</h1>
+            <h3>Click Here</h3>
+        </div></a>  
+        <a href="drivers.html"><div class="driverwebsite"> <!-- Seccond link to Drivers Championship-->
+            <div class="hometext">
+                <h1>Formula One Drivers Championship</h1>
+            </div>
+            <div class="homepageimage"><img src="Images/driverschampionship.jpg" alt="Drivers"></div>
+        </div></a>  
+        <a href="constructors.html"><div class="constructorwebsite"> <!-- Third Link to Constructors Championship -->
+            <h1>Formula One Constructor Championship</h1>
+            <div class="constructorhometext">
+                <h2>Red Bull 1st</h2>
+                <h2>Mercedes 2nd</h2>
+                <h2>Ferrari 3rd</h2>
+            </div>
+        </div></a>
+        <a href="store.html"><div class="storewebsite"> <!-- Fourth Link to Store Page -->
+            <div class="homepageimage"><img src="Images/store.jpg" alt="Store"></div>
+            <div class="hometext">
+                <h1>Buy some high quality Formula One Merch</h1>
+                <h3>Including Hats, shirts and hoodies for your driver of choice</h3>
+            </div>
+        </div></a>
+        <a href="https://www.youtube.com/channel/UCB_qr75-ydFVKSF9Dmo6izg"><div class="youtubewebsite"> <!-- Fifth Link Youtube -->
+            <div class="homepageimage"><img src="Images/Youtube.png" alt="Youtube"></div>
+            <div class="hometext">
+                <h1>Check Out Our Youtube Channel</h1>
+                <h3>Click Here</h3>
+            </div>
+        </div></a>
+    </div>
+
+    <footer>
+        <h1>&copy; 2023 Formula One Fan Site. All Rights Reserved.</h1>
+    </footer>
     
 </body>
+
 </html>

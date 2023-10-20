@@ -1,49 +1,45 @@
 
-@font-face {
-    font-family: 'FormulaOne'; /* The name you want to use for this font */
-    src: url('Fonts/Formula1-Regular.otf') format('opentype'); /* Add additional formats if necessary */
+@font-face { /* Imports the F1 Font */
+    font-family: 'FormulaOne';
+    src: url('Fonts/Formula1-Regular.otf') format('opentype'); 
     font-weight: normal;
     font-style: normal;
 }
 
-.container  {
-    margin: 0;
-    padding: 0;
-}
+/* Basic Website Elements */
 
-header {
+header { /* Sets the Color and heigh of header */
     background-color: red;
     height: 150px;
 }
 
-header .item {
-   float: left; 
-   color: white;
-   font-size: 60px;
-   padding-right: 50px;
-   font-weight: bold;
-
-} 
-.logo img {
+.logo img { /* Sets the width of the F1 Logo at the top of the page */
     width: 400px;
     height: auto;
 }
 
-header .container {
+header .container {  /* Sets the overall header container to be flex and to arrange the items with space between them, aligned in the center*/
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-content: center;
 }
 
-body {
+header .item { /* Sets the text color, font size, and sets the font to bold for the Website Title*/
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+ 
+ } 
+
+body { /* Sets margin and padding to 0, applies the font to the whole website and adds a basic light gray color to the website */
     margin: 0;
     padding: 0;
     font-family: 'FormulaOne';
     background-color: lightgray;
 }
 
-.navbar {
+.navbar { /* Sets up the navbar, takes up the entire screen, sets the height of the navbar, defines how the items should be aligned and sets the color*/
     display: flex;
     width: 100%;
     height: 100px;
@@ -52,197 +48,567 @@ body {
     background-color: darkred; 
 }
 
-.navbar .item {
+.navbar .item { /* For each item in the navbar take up 25% of the screen, and add a border to the left and right */
     text-align: center;
     align-items: center;
-    width: 50%;
+    width: 25%;
     border-left: 2px black solid;
     border-right: 2px black solid;      
 }
 
-.navbar a {
+.navbar a { /* Links in the navbar remove underline, change text color and font size */
     text-decoration: none;   
     color: white;
     font-size: 25px;
 }
 
-.navbar a:hover {
+.navbar a:hover { /* Hovering over navbar links changes it to red bold */
     color: red;
     font-weight: bold;
-    font-size: 30;
 }
 
-.image-grid {
+footer { /* Defines Colour, Height, And sets the text to the middle of the footer. Also adds a border above to seperate the footer from the page*/
+    background-color: red;
+    height: 100px;
+    justify-content: center;
+    text-align: center;
+    border-top: 10px black solid;
+}
+
+/* End Basic Website Elements */
+
+
+
+
+
+
+
+
+
+
+/* Drivers Championship */
+
+.image-grid-drivers-championship { /* Defines the Grid that holds the drivers in the drivers championship */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
-.driver {
-    text-decoration: none;
-}
-
-.image-grid-driver {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    text-align: center;
-    align-items: center;
-}
-
-.image-grid-driver-team {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    text-align: center;
-    align-items: center;
-    gap: 100px;
-}
-
-.RaceStats {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 200%;
-    margin-bottom: 20px;
-}
-
-.race {
-    display: flex;
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: 2px black dotted;
-
-}
-
-.race .stats {
-    flex: 1;
-    text-align: center;
-}
-
-.stats a {
-    text-decoration: none;
-    color: red;
-}
-
-.graphLabel {
-    font-size: 50px;
-    margin: 20px;
-}
-
-.driver img {
-    max-width: 100%;
-    height: auto;
-    .redbull {
-        border-bottom: 25px red solid; 
-    }
-}
-
-footer {
-    background-color: red;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    border-top: 10px black solid;
-    margin-top: 150px;
-}
-
-.driver .redbull {border-bottom: 25px darkblue solid; background-color: #00008baa; border-radius: 15px;}
-.driver .mercedes {border-bottom: 25px turquoise solid; background-color: #40e0d022; border-radius: 15px;}
-.driver .astonmartin {border-bottom: 25px darkgreen solid; background-color: #00ff00aa; border-radius: 15px;}
-.driver .ferrari {border-bottom: 25px red solid; background-color: #ff0000aa; border-radius: 15px;}
-.driver .mclaren {border-bottom: 25px darkorange solid; background-color: #ffa500aa; border-radius: 15px;}
-.driver .alpine {border-bottom: 25px lightblue solid; background-color: #add8e633; border-radius: 15px;}
-.driver .haas {border-bottom: 25px white solid; background-color: #ffffff; border-radius: 15px;}
-.driver .alfaromeo {border-bottom: 25px black solid; background-color: #333333; border-radius: 15px;}
-.driver .williams {border-bottom: 25px blue solid; background-color: #0000ffaa; border-radius: 15px;}
-.driver .alphatauri {border-bottom: 25px darkgray solid; background-color: #a9a9a966; border-radius: 15px;}
-
-
-.driver {
+.driver { /* Creates the driver cards that have a rounded border around them, with margin all around expecially on top */
     border: 2px black solid;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px;
     margin: 10px;
     margin-top: 30px;
 }
 
-.teams a {
-    text-decoration: none !important;   
+.driver a { /* Removes underlining and link color from the drivers names */
+    text-decoration: none;
+    color: black;
 }
 
-.team {
-    display: flex; 
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.teamtitle {
-    display: flex;
-    font-size: 34px;
-    justify-content: center;
-    font-weight: bold;
-}
-
-.redbullteam {background-color: darkblue; color: white; border-radius: 15px; margin: 30px; border: 5px black solid; } .redbullteam:hover {transform: scale(1.033)}
-.mercedesteam {background-color: turquoise; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .mercedesteam:hover {transform: scale(1.033)}
-.astonmartonteam {background-color: darkgreen; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .astonmartonteam:hover {transform: scale(1.033)}
-.ferrariteam {background-color: red; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .ferrariteam:hover {transform: scale(1.033)}
-.mclarenteam {background-color: darkorange; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .mclarenteam:hover {transform: scale(1.033)}
-.alpineteam {background-color: lightblue; color: black; border-radius: 15px; margin: 30px; border: 5px black solid} .alpineteam:hover {transform: scale(1.033)}
-.haasteam {background-color: white; color: black; border-radius: 15px; margin: 30px; border: 5px black solid} .haasteam:hover {transform: scale(1.033)}
-.alfaromeoteam {background-color: black; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .alfaromeoteam:hover {transform: scale(1.033)}
-.williamsteam {background-color: blue; color: white; border-radius: 15px; margin: 30px; border: 5px black solid} .williamsteam:hover {transform: scale(1.033)}
-.alphatauriteam {background-color: darkgray; color: black; border-radius: 15px; margin: 30px; border: 5px black solid} .alphatauriteam:hover {transform: scale(1.033)}
-
-a:hover {
+.image-grid-drivers-championship .driver:hover { /* Makes the driver cards expand slightly when mouse is hovering over them*/
     transform: scale(1.05);
 }
+.driver .name{ /* Aligns the name of each driver to the center */
+    text-align: center;
+}
+
+.driver img { /* Keeps the grid from falling apart, makes sure each driver image only takes up a maximum of 100% of the grid box they are in */
+    max-width: 100%;
+    height: auto;
+}
+
+/* All these commands define what colour each driver should be, and the border radius of all the cards that make rounded boxes*/
+.driver .redbull {border-bottom: 25px darkblue solid; background-color: #00008baa; border-radius: 15px 15px 0px 0px;}
+.driver .mercedes {border-bottom: 25px turquoise solid; background-color: #40e0d022; border-radius: 15px 15px 0px 0px;}
+.driver .astonmartin {border-bottom: 25px darkgreen solid; background-color: #00ff00aa; border-radius: 15px 15px 0px 0px;}
+.driver .ferrari {border-bottom: 25px red solid; background-color: #ff0000aa; border-radius: 15px 15px 0px 0px;}
+.driver .mclaren {border-bottom: 25px darkorange solid; background-color: #ffa500aa; border-radius: 15px 15px 0px 0px;}
+.driver .alpine {border-bottom: 25px lightblue solid; background-color: #add8e633; border-radius: 15px 15px 0px 0px;}
+.driver .haas {border-bottom: 25px white solid; background-color: #ffffff; border-radius: 15px 15px 0px 0px;}
+.driver .alfaromeo {border-bottom: 25px black solid; background-color: #333333; border-radius: 15px 15px 0px 0px;}
+.driver .williams {border-bottom: 25px blue solid; background-color: #0000ffaa; border-radius: 15px 15px 0px 0px;}
+.driver .alphatauri {border-bottom: 25px darkgray solid; background-color: #a9a9a966; border-radius: 15px 15px 0px 0px;}
+
+ /* End Drivers Championship */
 
 
-@media (max-width: 768px) {
-    header .item {
-        flex-direction: row;
-        font-size: 20px;
-        float: none; 
+
+
+
+
+
+
+
+
+
+ /* Constructors Championship */
+
+ 
+.teams a { /* Removes the underline of the text for the different teams */
+    text-decoration: none;   
+}
+
+.team { /* Sets the elements inside each team box to flex and makes the box take up the entire screen width */
+    display: flex; 
+    width: 100%;
+}
+
+.team .teamstat { /* Makes each team stat take up 1/n of the screen, aligns the text in the middle and sets the font size */
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+}
+
+.team .drivername{ /* Allows the names of the drivers to take up more room, sets the font size*/
+    flex: 2;
+    font-size: 10px;
+}
+
+.team .logo img { /* Defines the hight and width of the team logos, and sets margin on the left*/
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+}
+
+/* For each team it sets the same parameters and adds a hover condition which changes the background to their team color and changes the text color to white if the background color is too dark*/
+.redbullteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid; } .teams .redbullteam:hover {background-color: darkblue; color: white;}
+.mercedesteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .mercedesteam:hover {background-color: turquoise;}
+.astonmartonteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .astonmartonteam:hover {background-color: darkgreen; color: white;}
+.ferrariteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .ferrariteam:hover {background-color: red;}
+.mclarenteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .mclarenteam:hover {background-color: darkorange;}
+.alpineteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .alpineteam:hover {background-color: lightblue;}
+.haasteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .haasteam:hover {background-color: white;}
+.alfaromeoteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .alfaromeoteam:hover {background-color: black; color: white;}
+.williamsteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .williamsteam:hover {background-color: blue; color: white;}
+.alphatauriteam {color: black; border-radius: 5px; margin: 15px; border: 5px black solid} .teams .alphatauriteam:hover {background-color: darkgray;}
+
+/* End Constructors Championship */
+
+
+
+
+
+
+
+
+
+
+/* Individual Driver Pages */ 
+
+/* It should be noted that the individual drivers use many of the things defined and set in the drivers championship */
+
+.image-grid-driver { /* Defines the image grid for the driver, driver stats and race stats*/
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    align-items: center;
+}
+
+.RaceStats { /* Defines the race stats box, width is 200% to allow it to take up 2 grid boxes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.graphLabel { /* changes the font size and centers the graph label on top of the race stats graph */
+    font-size: 50px;
+    margin-left: 15%;
+}
+
+.race { /* This is each row of the race stats chart*/
+    display: flex;
+    width: 100%;
+    margin-left: 15%;
+    border: 2px black solid;
+
+}
+
+.race .stats { /* And these are the rows of the race stats chart */
+    flex: 1;
+    text-align: center;
+}
+
+.stats a { /* Removes underline from the team link, as well as coloring it red */
+    text-decoration: none;
+    color: red;
+}
+
+/* End Individual Driver Pages */
+
+
+
+
+
+
+
+
+
+
+/* Individual Team Pages */
+
+.image-grid-driver-team { /* The grid that stores the two drivers of each team */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    align-items: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.image-grid-driver-team a { /* Hides underlines underneath the individual teams driver cards. also makes it black. */
+    text-decoration: none;
+    color: black;
+}
+
+.image-grid-driver-team .driver { /* The grid that stores the two drivers of each team */
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.teamtitle { /* Centers the team title in the center of the page */
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* This is the only driver specific selector all the rest were borrowed from other areas*/
+
+/* End Individual Team Pages */
+
+
+
+
+
+
+
+
+
+
+/* Store Page */
+
+.storepage  { /* defines the store page as a 2 column wide grid */
+    display: grid;
+    grid-template-columns: 2fr 1fr;    
+}
+
+.storepage :nth-child(2) { /* Sets the Text for hats to be white with a black bottem*/
+    background-color: white;
+    border-bottom: 2px black solid;
+}
+
+.storepage :nth-child(3) { /* Sets the Text for the shirts to be pink with a black border below */
+    background-color: pink;
+    border-bottom: 2px black solid;
+    padding-left: 50px;
+}
+
+.storepage :nth-child(4) { /* Gives the Shirt Image Padding and sets the height */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 300px;
+}
+
+.storepage :nth-child(5) { /* Gives the Hoodie image padding */
+    padding-left: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 300px;
+}
+
+.storepage :nth-child(6) { /* Gives the Hoodie text a white background color and padding to the right */
+    background-color: white;
+    padding-right: 50px;
+}
+
+.storepage .hats { /* sets the hats background to be white with a black border on the bottem */
+    background-color: white;
+    border-bottom: 2px black solid;
+}
+.storepage .hats img { /* sets the width and height of the hat image, also adds some padding on the left*/
+    width: auto;
+    height: 300px;
+    padding-left: 100px;
+}
+
+.storepage .text { /* For all text make it centered, align the text in the center and set the font size to 35px */
+  display: flex;
+  align-items: center; 
+  font-size: 35px;
+}
+
+.text a{ /* Removes underline of the text and makes the color black */
+    text-decoration: none;
+    color: black;
+}
+
+.storepage .shirts { /* Sets the background of the shirts to be pink and adds a black border underneath */
+    background-color: pink;
+    border-bottom: 2px black solid;
+}
+
+.storepage .shirts img { /* sets the width and height of the shirt image, also adds some padding on the left */
+    height: 300px;
+    width: auto;
+}
+
+.storepage .hoodies { /* Sets the background colour of the hoodies to be white */
+    background-color: white;
+}
+
+.storepage .hoodies img { /* sets the width and height of the shirt image, also adds some padding on the left */
+    width: auto;
+    height: 300px;
+}
+
+.text :hover{ /* Adds a hover effect for the checkout links */
+    color: red;
+}
+
+/* End Store Page */
+
+
+
+
+
+
+
+
+
+/* Home Page */
+
+.homepageelements a { /* Removes all underlining of text for the home page */
+    text-decoration: none;
+
+}
+
+.realwebsite { /* Sets the parameters for the first link to f1 tv on the main page */
+    width: 100%;
+    height: 400px;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black;
+}
+
+.realwebsite:hover { /* Makes that first link a darker shade of gray when hovered*/
+    background-color: darkgray;
+}
+
+.driverwebsite { /* Sets the parameters for the seccond link to the drivers championship - uses grid to seperate the text and the image*/
+    width: 100%;
+    height: 400px;
+    background-color: lightcoral;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.driverwebsite:hover { /* Makes that seccond link a darker shade of coral when hovered */
+    background-color: coral;
+}
+
+.hometext { /* Sets the parameters for the text on links with image a text*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 15%;
+    color: black;
+}
+
+.constructorwebsite { /* Sets the parameters for the third link to the constructors championship page */
+    width: 100%;
+    height: 400px;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.constructorwebsite:hover { /* Makes that third link a darker shade of gray when hovered*/
+    background-color: darkgray;
+}
+
+
+.storewebsite { /* Sets the parameters for the fourth link to the store page uses grid to seperate text and image in this link*/
+    width: 100%;
+    height: 400px;
+    background-color: lightcoral;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.storewebsite:hover { /* Makes that fourth link a darker shade of coral when hovered */
+    background-color: coral;
+}
+
+.storewebsite img { /* Gives padding to the image on the right*/
+    padding-left: 15%;
+}
+
+.youtubewebsite { /* Sets the parameters for the fifth link to the F1 Youtube Link, uses grid to seperate text and image in this link*/
+    width: 100%;
+    height: 400px;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.youtubewebsite:hover { /*Makes the fifth link a darker shade of grey when hovered */
+    background-color: darkgray;
+}
+
+
+
+.homepageimage img { /* Sets all the images to be the same height as each of the links (400px)*/
+    width: auto;
+    height: 400px;
+}
+
+/* End Home Page */
+
+
+
+
+
+
+
+
+
+/* Store Form */
+
+.checkoutform { /* Adds Spacing to the entire checkout form*/
+    margin-left: 5px;
+}
+
+.checkoutform input[type="text"], .my-form textarea{ /* Makes the bars take up almost all of the screen, boxes become bigger and have padding*/
+    padding: 10px;
+	width: 96%;
+    margin: 2%;
+}
+
+.checkoutform select { /* changes the width margin and padding of drop down menus */
+    width: 25%;
+    margin: 10px;
+    padding: 10px;
+}
+
+.button { /* styles and resizes the checkout button */
+    padding: 20px;
+    width: 300px;
+    margin: 10px;
+    background-color: #222;
+    color: white;
+    font-size: 20px;
+    font-family: 'FormulaOne';
+}
+
+/* End Store Form */
+
+@media (max-width: 1500px) { /* Removes all images on the home page when it gets under 1500px */
+    .storewebsite img {
+        padding-left: 0;
     }
 
-    header .item {
-        display: none;
+    .driverwebsite img {
+        padding-left: 0;
     }
-    .navbar {
+}
+
+ 
+@media (max-width: 1000px) {
+    /* Basic Website Elements */
+
+    header .item { /* Removes header text when website gets too small */
+        font-size: 0px;
+    }
+    .navbar { /* Changes the navbar from a row to a column */
         flex-direction: column;
-        width: 100%;
         height: fit-content;
         border-bottom: none;   
+        align-items: center;
     }
 
-    .navbar .item {
-        padding-left: 50%;
-        padding-right: 50%;
+    .navbar .item { /* Removes border on the items in the navbar and adds padding and bottom border */
         padding-bottom: 10px;
         padding-top: 10px;
         border-bottom: 2px black dotted;
+        width: 100%;
         border-left: none;
         border-right: none;
     }
-    footer {
+
+    footer { /* Changes font size of footer */
         font-size: 10px;
     }
-    .image-grid-driver {
-        grid-template-columns: repeat(1, 1fr);
-      
-    }
-    .image-grid-driver-team {
-        grid-template-columns: repeat(1, 1fr);       
-    }
+
+    /* End Basic Website Elements*/
+
     
-    .image-grid {
+
+
+
+
+
+
+
+
+    /* Drivers Championship */
+
+    .image-grid-drivers-championship { /* Changes the drivers championship from 4 per row to 2 per row*/
         grid-template-columns: repeat(2, 1fr);
 
     }
 
-    .RaceStats {
+    .driver .name { /* Decreases the text to fit on smaller screens */
+        font-size: 8px;
+    }
+
+    /* End Drivers Championship */
+
+
+
+
+
+
+
+
+
+
+    /* Constructors Championship */
+
+    .team .drivername{ /* Stops Displaying Driver Names in Small Screens */
+        display:none;
+    }
+
+    .team .teamstat { /* decreases the text to fit on smaller screens */
+        font-size: 8px;
+    }
+
+    /* End Constructors Championship*/
+
+
+
+
+
+
+
+
+
+    /* Individual Driver Pages */
+
+    .image-grid-driver { /* Makes individual driver pages 1 column big instead of two */
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .RaceStats { /* Changes race states to be centered in small mode*/
         display: flex;
         flex-direction: none;
         justify-content: space-between;
@@ -250,5 +616,133 @@ a:hover {
         width: 100%;
         margin-bottom: 20px;
     }
+
+    .race { /* This is each row of the race stats chart*/
+        margin-left: 0%;    
+    }
+
+    .graphLabel { /* Centeres the graph label in the middle of the page when smaller*/
+        margin-left: 0;
+    }
+
+    /* End Individual Driver Pages */
+
+
+
+
+
+
+
+
+
+
+    /* individual team pages */
+
+    .image-grid-driver-team .driver { /* The grid that stores the two drivers of each team */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /* End Individual team pages */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Home Page */
+
+    .storewebsite img { /* Stops Displaying the Store Image */
+        display:none;
+        width: 0px;
+    }
     
+    .storewebsite { /* Puts the hometext in the middle on the store website part of the home page. overrides the previous grid layout. */
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hometext {  /* Aligns the text in the hometext object in center and gets rid of all padding */ 
+        text-align: center;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .driverwebsite img { /* Stops Displaying the Driver Championship Image */
+        display: none;
+        width: 0px;
+    }
+    
+    .driverwebsite { /* Makes driver website 1 column wide, hiding the image grid that isnt being displayed*/
+        grid-template-columns: 1fr;
+    }
+
+    .youtubewebsite .hometext { /* Hides the hometext so that you just see the youtube logo */
+        display: none;
+        width: 0px;
+    }
+
+    .youtubewebsite { /* Centers the youtube logo */
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* End Home Page */
+
+
+
+
+
+
+
+
+
+
+    /* Store Page */
+
+    
+    .storepage { /* Changes the storepage to be 1 column wide */
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .storepage :nth-child(2) { /* adds padding the the hat text*/
+        padding-left: 50px;
+    }
+
+    .storepage :nth-child(6) { /* adds padding to the hoodie text */
+        padding-left: 50px;
+    }
+
+    .storepage .text { /* changes the font to make it fit on smaller screens */
+        font-size: 25px;
+    }
+
+    .storepage :nth-child(1) { /* Moves Hat Image to the center */
+        display: flex;
+        justify-content: center;
+    }
+    .storepage :nth-child(4) { /* Moves Shirt Image to the center */
+        display: flex;
+        justify-content: center;
+    }
+    .storepage :nth-child(5) { /* Moves Hoodie Image to the center */
+        display: flex;
+        justify-content: center;
+    }
+    
+  
+
+    /* End Store Page */
 }
