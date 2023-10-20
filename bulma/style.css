@@ -1,0 +1,46 @@
+body {
+    background-color: #eef2f5;
+}
+
+.section {
+    height: 100vh;
+}
+
+.checkbox {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.centerimage {
+    position: fixed;
+    background: white;
+    border-radius: 50%;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%)
+}
+
+.is-rounded {
+    padding: 7px ;
+    border: 2px solid #eee;
+}
+
+h3 {
+    padding-bottom: 25px;
+    border-bottom: 2px black solid;
+}
+
+p {
+    padding-top: 30px;
+}
+
+.box {
+    padding-top: 140px;
+    margin-top: 95px;
+}
+
+
+
+
+
+
