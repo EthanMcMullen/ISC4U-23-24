@@ -73,8 +73,8 @@ function dragDrop(e) {
     if (correctGo) {
         if(takenByOpponent && valid) {
             e.target.parentNode.append(draggedElement)
-            e.target.remove() 
-            checkForWin() 
+            e.target.remove()  
+            checkForWin()
             changePlayer()
             return
         }
@@ -88,6 +88,7 @@ function dragDrop(e) {
             e.target.append(draggedElement)
             checkForWin()
             changePlayer()
+            
             return
         }
 
@@ -118,7 +119,7 @@ function revertIds() {
 
 
 function checkForWin () {
-    const kings = document.querySelectorAll(`#king`)
+    const kings = Array.from(document.querySelectorAll(`#king`))
     console.log(kings)
     if(!kings.some(king => king.firstChild.classList.contains('white'))) {
         infoDisplay.innerHTML = "Black Player Wins"
