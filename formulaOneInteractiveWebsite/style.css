@@ -1,0 +1,29 @@
+.add-race-border {
+    border: black 2px solid;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.number-table-header {width: 5%;}
+
+.race-table-header {width: 25%;}
+
+.winner-table-header {width: 25%;}
+
+.constructor-table-header {width: 25%;}
+
+.laps-table-header {width: 10%;}
+
+.time-table-header {Width: 10%;}
+
+.stat-button {
+    border: none;
+    background: none;
+    width: 100%;
+    height: 100%;
+}
+
+.table-header:hover {
+    background: lightgray;
+}
+

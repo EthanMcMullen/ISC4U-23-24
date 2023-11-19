@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css"> 
+  <title>Race Stats</title>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="images/f1Logo.png" width="70" height="0">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
+        </a>
+  
+        <a class="navbar-item">
+          Race Stats
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Stats
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Drivers
+            </a>
+            <a class="navbar-item">
+              Teams
+            </a>
+            <a class="navbar-item">
+              Previous Years
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Race Stats</h1>
+
+      <button class="button is-primary mb-4" onclick="toggleInputSection()">Add new Race?</button>
+      <div id="inputSection" style="display: none;">
+        <div class="columns">
+          <div class="column">
+            <label class="label">Grand Prix</label>
+            <input class="input" type="text" id="grandPrix" placeholder="Enter Grand Prix">
+          </div>
+          <div class="column">
+            <label class="label">Winner</label>
+              <div class="select"> <select id="winner">
+                      <option value="Max Verstappen">Max Verstappen</option>
+                      <option value="Sergio Perez">Sergio Perez</option>
+                      <option value="George Russell">George Russell</option>
+                      <option value="Lewis Hamilton">Lewis Hamilton</option>
+                      <option value="Carlos Sainz">Carlos Sainz</option>
+                      <option value="Charles Leclerc">Charles Leclerc</option>
+                      <option value="Oscar Piastri">Oscar Piastri</option>
+                      <option value="Lando Norris">Lando Norris</option>
+                      <option value="Lance Stroll">Lance Stroll</option>
+                      <option value="Fernando Alonso">Fernando Alonso</option>
+                      <option value="Pierre Gasly">Pierre Gasly</option>
+                      <option value="Esteban Ocon">Esteban Ocon</option>
+                      <option value="Logan Sargeant">Logan Sargeant</option>
+                      <option value="Alexander Albon">Alexander Albon</option>
+                      <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                      <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                      <option value="Zhou Guanyu">Zhou Guanyu</option>
+                      <option value="Valtteri Bottas">Valtteri Bottas</option>
+                      <option value="Kevin Magnussen">Kevin Magnussen</option>
+                      <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                  </select>
+              </div>
+          </div>
+          <div class="column">
+            <label class="label">Constructor</label>
+              <div class="select"> <select id="winningConstructor">
+                      <option value="RedBull">RedBull</option>
+                      <option value="Mercedes">Mercedes</option>
+                      <option value="Ferrari">Ferrari</option>
+                      <option value="Mclaren">Mclaren</option>
+                      <option value="Aston Martin">Aston Martin</option>
+                      <option value="Alpine">Alpine</option>
+                      <option value="Williams">Williams</option>
+                      <option value="Alpha Tauri">Alpha Tauri</option>
+                      <option value="Alfa Romeo">Alfa Romeo</option>
+                      <option value="Haas">Haas</option>
+                  </select>
+              </div>
+            </div>
+          <div class="column">
+            <label class="label">Time</label>
+            <input class="input" type="number" id="time" placeholder="Ex. 015232">
+          </div>
+          <div class="column">
+              <label class="label">Laps</label>
+              <input class="input" type="number" id="laps" placeholder="Ex. 57">
+            </div>
+        </div>
+        <button class="button mb-2 is-danger" onclick="emptyLocalStorage()">Delete all race Data?</button>
+        <button class="button is-primary add-race-border" onclick="addNewRace()">Submit</button>
+      </div>
+
+
+      <table class="table is-bordered is-fullwidth mt-3">
+        <thead>
+          <tr>
+            <th class="number-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('raceNumber')">#:</button></th>
+            <th class="race-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('grandPrix')">Grand Prix:</button></th>
+            <th class="winner-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('winner')">Winner:</button></th>
+            <th class="constructor-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('winningConstructor')">Winning Constructor:</button></th>
+            <th class="laps-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('laps')">Laps:</button></th>
+            <th class="time-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('time')">Time:</button></th>
+          </tr>
+        </thead>
+        <tbody id="statsTableBody">
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

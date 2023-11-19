@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const students = [
+        //     { name: 'Alice', score: 75 },
+        //     { name: 'Bob', score: 92 },
+        //     { name: 'Charlie', score: 88 },
+        //     { name: 'David', score: 60 },
+        //     { name: 'Eve', score: 78 },
+        // ];
+
+        // const studentsOverEighty = students
+        //     .filter(student => student.score > 80)
+        //     .map(student => student.score*2);
+        
+        // // console.log(studentsOverEighty)
+
+        // const scores = [
+        //     { team: 'A', score: 7 },
+        //     { team: 'B', score: 12 },
+        //     { team: 'C', score: 8 },
+        //     { team: 'D', score: 9 },
+        //     { team: 'E', score: 11 },
+        // ];
+        
+        // // const highestScoreIndex = scores.reduce((currentIndex, team, index) => {
+        // //     if(team.score > scores[currentIndex].score) {
+        // //         return index
+        // //     }
+        // // },0)
+
+        // // console.log(scores[highestScoreIndex])
+
+        // const high = scores.reduce((a,b) => {
+        //     if(!a || b.score > a.score) {
+        //         return b;
+        //     } else{
+        //         return a;
+        //     }
+        // }, 0);
+
+
+        // const products = [
+        //     { name: 'Laptop', category: 'Electronics' },
+        //     { name: 'Shoes', category: 'Fashion' },
+        //     { name: 'Camera', category: 'Electronics' },
+        //     { name: 'Jeans', category: 'Fashion' },
+        //     { name: 'Microwave', category: 'Electronics' },
+        // ];
+
+        // const categoryCounts = [];
+
+        // let isAccounted = false;
+
+        // products.forEach(product => {
+        //   categoryCounts.forEach((element, index) => {
+        //     if(categoryCounts[index].category === product.category) {
+        //         isAccounted = true
+        //         categoryCounts[index].number++
+        //     }
+        //   });
+        //   if(!isAccounted) {
+        //     categoryCounts.push({category: product.category, number: 1})
+        //   }
+        // });
+
+        // console.log(categoryCounts);
+
+        const students = [
+            { name: 'Alice', score: 75 },
+            { name: 'Bob', score: 92 },
+            { name: 'Charlie', score: 88 },
+            { name: 'David', score: 60 },
+            { name: 'Eve', score: 88 },
+        ];
+
+        const sortedStudents = students.sort((s1, s2) => {
+            if (s1.score > s2.score) {
+                return 1;
+            } else if (s1.score < s2.score) {
+                return -1;
+            } else {
+                if(s1.name > s2.name) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        });
+
+        console.log(sortedStudents)
+
+    </script>
+</body>
+</html>
