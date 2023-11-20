@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Q1
+
+        // const students = [
+        //     { name: 'Alice', score: 75 },
+        //     { name: 'Bob', score: 92 },
+        //     { name: 'Charlie', score: 88 },
+        //     { name: 'David', score: 60 },
+        //     { name: 'Eve', score: 78 },
+        // ];
+        // const scoredeighty = students.filter(student => student.score >= 80)
+        // scoredeighty.map(student => student.score * 2);
+
+        // console.log(scoredeighty);
+
+        // Q2
+
+        const scores = [
+            { team: 'A', score: 7 },
+            { team: 'B', score: 12 },
+            { team: 'C', score: 8 },
+            { team: 'D', score: 9 },
+            { team: 'E', score: 11 },
+        ];
+
+        const highestScore = scores.reduce((total, game, index) => {
+            if(game.score > total) {
+                total = game.score
+                return index
+            }
+        }, 0);
+
+        console.log(highestScore)
+
+        
+
+    </script>
+</body>
+</html>
