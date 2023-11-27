@@ -11,34 +11,66 @@ function saveGameData() {
 
 function addNewRace() {
     let grandPrix = document.getElementById('grandPrix').value;
-    let winner = document.getElementById('winner').value;
-    let winningConstructor = document.getElementById('winningConstructor').value;
     let laps = document.getElementById('laps').value;
     let time = document.getElementById('time').value;
+    let date = getPNum('date')
+    let winner = getPNum('winner');
+    let pTwo= getPNum('2nd');
+    let pThree= getPNum('3rd');
+    let pFour= getPNum('4th');
+    let pFive= getPNum('5th');
+    let pSix= getPNum('6th');
+    let pSeven= getPNum('7th');
+    let pEight= getPNum('8th');
+    let pNine= getPNum('9th');
+    let pTen= getPNum('10th');
+    let pEleven= getPNum('11th');
+    let pTwelve= getPNum('12th');
+    let pThirteen= getPNum('13th');
+    let pFourteen= getPNum('14th');
+    let pFivteen= getPNum('15th');
+    let pSixteen= getPNum('16th');
+    let pSeventeen= getPNum('17th');
+    let pEighteen= getPNum('18th');
+    let pNineteen= getPNum('19th');
+    let pTwenty= getPNum('20th')
 
-    addRow(grandPrix, winner, winningConstructor, laps, time);
+    addRow(grandPrix, winner, date, laps, time);
+}
+
+function getPNum(str) {
+    return document.getElementById(str).value;
+}
+
+function setPNum(innerHtml, newRow) { /* Make it so p2-20 doesnt show on the main table with boolean */
+    element = document.createElement('td');
+    element.innerText = innerHtml;
+    newRow.appendChild(newGameValue);
 }
 
 
-function addRow(grandPrix, winner, winningConstructor, laps, time) {
+function addRow(grandPrix, winner, date, laps, time, pTwo, pThree, pFour, pFive, pSix, pSeven, pEight, pNine, pTen, pEleven, pTwelve, pThirteen, pFourteen, pFivteen, pSixteen, pSeventeen, pEighteen, pNineteen, pTwenty) {
     let tableBody = document.getElementById('statsTableBody');
 
     let newRow = document.createElement('tr');
 
     let newGameValue = document.createElement('td'); newGameValue.innerText = gameNumber; newRow.appendChild(newGameValue);
     let newGrandPrixValue = document.createElement('td'); newGrandPrixValue.innerText = grandPrix; newRow.appendChild(newGrandPrixValue);
-    let newWinnerValue = document.createElement('td'); newWinnerValue.innerText = winner; newRow.appendChild(newWinnerValue);
-    let newWinningConstructorValue = document.createElement('td'); newWinningConstructorValue.innerText = winningConstructor; newRow.appendChild(newWinningConstructorValue);
+    let newDateValue = document.createElement('td'); newDateValue.innerText = date; newRow.appendChild(newDateValue);
     let newLapsValue = document.createElement('td'); newLapsValue.innerText = laps; newRow.appendChild(newLapsValue);
     let newTimeValue = document.createElement('td'); newTimeValue.innerText = time.substring(0,2) + ":" + time.substring(2,4) + ":" + time.substring(4,6); newRow.appendChild(newTimeValue);
     
+    setPNum(winner, newRow); setPNum(pTwo, newRow); setPNum(pThree, newRow); setPNum(pFour, newRow); setPNum(pFive, newRow); setPNum(pSix, newRow); setPNum(pSeven, newRow); setPNum(pEight, newRow); setPNum(pNine, newRow); setPNum(pTen, newRow)
+    setPNum(pEleven, newRow); setPNum(pTwelve, newRow); setPNum(pThirteen, newRow); setPNum(pFourteen, newRow); setPNum(pFivteen, newRow); setPNum(pSixteen, newRow); setPNum(pSeventeen, newRow); setPNum(pEighteen, newRow); setPNum(pNineteen, newRow); setPNum(pTwenty, newRow)
+
     let gameData = {
         raceNumber: gameNumber,
         grandPrix: grandPrix,
         winner: winner,
         winningConstructor: winningConstructor,
         laps: laps,
-        time: time
+        time: time,
+        pTwo: pTwo, pThree: pThree, pFour: pFour, pFive: pFive, pSix: pSix, pSeven: pSeven, pEight: pEight, pNine: pNine, pTen: pTen, pEleven: pEleven, pTwelve: pTwelve, pThirteen: pThirteen, pFourteen: pFourteen, pFivteen: pFivteen, pSixteen: pSixteen, pSeventeen: pSeventeen, pEighteen: pEighteen, pNineteen: pNineteen, pTwenty: pTwenty
     }
     gameNumber++;
 
@@ -87,7 +119,7 @@ function reWriteTable(newgameList) {
     gameNumber = 1;
 
     newgameList.forEach(data => {
-        addRow(data.grandPrix, data.winner, data.winningConstructor, data.laps, data.time);
+        addRow(data.grandPrix, data.winner, data.winningConstructor, data.laps, data.time, data.p1, data.p2);
       });
     saveGameData();
 }

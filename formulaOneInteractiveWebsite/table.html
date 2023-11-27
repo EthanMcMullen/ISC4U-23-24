@@ -10,7 +10,7 @@
 <body>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
+      <a class="navbar-item" href=" ://bulma.io">
         <img src="images/f1Logo.png" width="70" height="0">
       </a>
   
@@ -77,47 +77,9 @@
             <input class="input" type="text" id="grandPrix" placeholder="Enter Grand Prix">
           </div>
           <div class="column">
-            <label class="label">Winner</label>
-              <div class="select"> <select id="winner">
-                      <option value="Max Verstappen">Max Verstappen</option>
-                      <option value="Sergio Perez">Sergio Perez</option>
-                      <option value="George Russell">George Russell</option>
-                      <option value="Lewis Hamilton">Lewis Hamilton</option>
-                      <option value="Carlos Sainz">Carlos Sainz</option>
-                      <option value="Charles Leclerc">Charles Leclerc</option>
-                      <option value="Oscar Piastri">Oscar Piastri</option>
-                      <option value="Lando Norris">Lando Norris</option>
-                      <option value="Lance Stroll">Lance Stroll</option>
-                      <option value="Fernando Alonso">Fernando Alonso</option>
-                      <option value="Pierre Gasly">Pierre Gasly</option>
-                      <option value="Esteban Ocon">Esteban Ocon</option>
-                      <option value="Logan Sargeant">Logan Sargeant</option>
-                      <option value="Alexander Albon">Alexander Albon</option>
-                      <option value="Yuki Tsunoda">Yuki Tsunoda</option>
-                      <option value="Daniel Ricciardo">Daniel Ricciardo</option>
-                      <option value="Zhou Guanyu">Zhou Guanyu</option>
-                      <option value="Valtteri Bottas">Valtteri Bottas</option>
-                      <option value="Kevin Magnussen">Kevin Magnussen</option>
-                      <option value="Nico Hulkenberg">Nico Hulkenberg</option>
-                  </select>
-              </div>
+            <label class="label">Date</label>
+            <input class="input" type="number" id="date" placeholder="MM/DD/YYYY">
           </div>
-          <div class="column">
-            <label class="label">Constructor</label>
-              <div class="select"> <select id="winningConstructor">
-                      <option value="RedBull">RedBull</option>
-                      <option value="Mercedes">Mercedes</option>
-                      <option value="Ferrari">Ferrari</option>
-                      <option value="Mclaren">Mclaren</option>
-                      <option value="Aston Martin">Aston Martin</option>
-                      <option value="Alpine">Alpine</option>
-                      <option value="Williams">Williams</option>
-                      <option value="Alpha Tauri">Alpha Tauri</option>
-                      <option value="Alfa Romeo">Alfa Romeo</option>
-                      <option value="Haas">Haas</option>
-                  </select>
-              </div>
-            </div>
           <div class="column">
             <label class="label">Time</label>
             <input class="input" type="number" id="time" placeholder="Ex. 015232">
@@ -126,10 +88,562 @@
               <label class="label">Laps</label>
               <input class="input" type="number" id="laps" placeholder="Ex. 57">
             </div>
-        </div>
+          </div>
+          <div class="positionSelection">
+            <div class="columns">
+              <div class="column">
+                <label class="label">Winner</label>
+                  <div class="select"> <select id="winner">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">2nd</label>
+                  <div class="select"> <select id="2nd">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">3rd</label>
+                  <div class="select"> <select id="3rd">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">4th</label>
+                  <div class="select"> <select id="4th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">5th</label>
+                  <div class="select"> <select id="5th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              </div>
+              <div class="columns">
+              <div class="column">
+                <label class="label">6th</label>
+                  <div class="select"> <select id="6th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">7th</label>
+                  <div class="select"> <select id="7th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">8th</label>
+                  <div class="select"> <select id="8th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">9th</label>
+                  <div class="select"> <select id="9th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">10th</label>
+                  <div class="select"> <select id="10th"> 
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column">
+                <label class="label">11th</label>
+                  <div class="select"> <select id="11th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">12th</label>
+                  <div class="select"> <select id="12th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">13th</label>
+                  <div class="select"> <select id="13th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">14th</label>
+                  <div class="select"> <select id="14th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="column">
+                <label class="label">15th</label>
+                  <div class="select"> <select id="15th">
+                          <option value="Null"></option>
+                          <option value="Max Verstappen">Max Verstappen</option>
+                          <option value="Sergio Perez">Sergio Perez</option>
+                          <option value="George Russell">George Russell</option>
+                          <option value="Lewis Hamilton">Lewis Hamilton</option>
+                          <option value="Carlos Sainz">Carlos Sainz</option>
+                          <option value="Charles Leclerc">Charles Leclerc</option>
+                          <option value="Oscar Piastri">Oscar Piastri</option>
+                          <option value="Lando Norris">Lando Norris</option>
+                          <option value="Lance Stroll">Lance Stroll</option>
+                          <option value="Fernando Alonso">Fernando Alonso</option>
+                          <option value="Pierre Gasly">Pierre Gasly</option>
+                          <option value="Esteban Ocon">Esteban Ocon</option>
+                          <option value="Logan Sargeant">Logan Sargeant</option>
+                          <option value="Alexander Albon">Alexander Albon</option>
+                          <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                          <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                          <option value="Zhou Guanyu">Zhou Guanyu</option>
+                          <option value="Valtteri Bottas">Valtteri Bottas</option>
+                          <option value="Kevin Magnussen">Kevin Magnussen</option>
+                          <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                      </select>
+                  </div>
+              </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <label class="label">16th</label>
+                    <div class="select"> <select id="16th">
+                            <option value="Null"></option>
+                            <option value="Max Verstappen">Max Verstappen</option>
+                            <option value="Sergio Perez">Sergio Perez</option>
+                            <option value="George Russell">George Russell</option>
+                            <option value="Lewis Hamilton">Lewis Hamilton</option>
+                            <option value="Carlos Sainz">Carlos Sainz</option>
+                            <option value="Charles Leclerc">Charles Leclerc</option>
+                            <option value="Oscar Piastri">Oscar Piastri</option>
+                            <option value="Lando Norris">Lando Norris</option>
+                            <option value="Lance Stroll">Lance Stroll</option>
+                            <option value="Fernando Alonso">Fernando Alonso</option>
+                            <option value="Pierre Gasly">Pierre Gasly</option>
+                            <option value="Esteban Ocon">Esteban Ocon</option>
+                            <option value="Logan Sargeant">Logan Sargeant</option>
+                            <option value="Alexander Albon">Alexander Albon</option>
+                            <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                            <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                            <option value="Zhou Guanyu">Zhou Guanyu</option>
+                            <option value="Valtteri Bottas">Valtteri Bottas</option>
+                            <option value="Kevin Magnussen">Kevin Magnussen</option>
+                            <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="column">
+                  <label class="label">17th</label>
+                    <div class="select"> <select id="17th">
+                            <option value="Null"></option>
+                            <option value="Max Verstappen">Max Verstappen</option>
+                            <option value="Sergio Perez">Sergio Perez</option>
+                            <option value="George Russell">George Russell</option>
+                            <option value="Lewis Hamilton">Lewis Hamilton</option>
+                            <option value="Carlos Sainz">Carlos Sainz</option>
+                            <option value="Charles Leclerc">Charles Leclerc</option>
+                            <option value="Oscar Piastri">Oscar Piastri</option>
+                            <option value="Lando Norris">Lando Norris</option>
+                            <option value="Lance Stroll">Lance Stroll</option>
+                            <option value="Fernando Alonso">Fernando Alonso</option>
+                            <option value="Pierre Gasly">Pierre Gasly</option>
+                            <option value="Esteban Ocon">Esteban Ocon</option>
+                            <option value="Logan Sargeant">Logan Sargeant</option>
+                            <option value="Alexander Albon">Alexander Albon</option>
+                            <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                            <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                            <option value="Zhou Guanyu">Zhou Guanyu</option>
+                            <option value="Valtteri Bottas">Valtteri Bottas</option>
+                            <option value="Kevin Magnussen">Kevin Magnussen</option>
+                            <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="column">
+                  <label class="label">18th</label>
+                    <div class="select"> <select id="18th">
+                            <option value="Null"></option>
+                            <option value="Max Verstappen">Max Verstappen</option>
+                            <option value="Sergio Perez">Sergio Perez</option>
+                            <option value="George Russell">George Russell</option>
+                            <option value="Lewis Hamilton">Lewis Hamilton</option>
+                            <option value="Carlos Sainz">Carlos Sainz</option>
+                            <option value="Charles Leclerc">Charles Leclerc</option>
+                            <option value="Oscar Piastri">Oscar Piastri</option>
+                            <option value="Lando Norris">Lando Norris</option>
+                            <option value="Lance Stroll">Lance Stroll</option>
+                            <option value="Fernando Alonso">Fernando Alonso</option>
+                            <option value="Pierre Gasly">Pierre Gasly</option>
+                            <option value="Esteban Ocon">Esteban Ocon</option>
+                            <option value="Logan Sargeant">Logan Sargeant</option>
+                            <option value="Alexander Albon">Alexander Albon</option>
+                            <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                            <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                            <option value="Zhou Guanyu">Zhou Guanyu</option>
+                            <option value="Valtteri Bottas">Valtteri Bottas</option>
+                            <option value="Kevin Magnussen">Kevin Magnussen</option>
+                            <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="column">
+                  <label class="label">19th</label>
+                    <div class="select"> <select id="19th">
+                            <option value="Null"></option>
+                            <option value="Max Verstappen">Max Verstappen</option>
+                            <option value="Sergio Perez">Sergio Perez</option>
+                            <option value="George Russell">George Russell</option>
+                            <option value="Lewis Hamilton">Lewis Hamilton</option>
+                            <option value="Carlos Sainz">Carlos Sainz</option>
+                            <option value="Charles Leclerc">Charles Leclerc</option>
+                            <option value="Oscar Piastri">Oscar Piastri</option>
+                            <option value="Lando Norris">Lando Norris</option>
+                            <option value="Lance Stroll">Lance Stroll</option>
+                            <option value="Fernando Alonso">Fernando Alonso</option>
+                            <option value="Pierre Gasly">Pierre Gasly</option>
+                            <option value="Esteban Ocon">Esteban Ocon</option>
+                            <option value="Logan Sargeant">Logan Sargeant</option>
+                            <option value="Alexander Albon">Alexander Albon</option>
+                            <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                            <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                            <option value="Zhou Guanyu">Zhou Guanyu</option>
+                            <option value="Valtteri Bottas">Valtteri Bottas</option>
+                            <option value="Kevin Magnussen">Kevin Magnussen</option>
+                            <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="column">
+                  <label class="label">20th</label>
+                    <div class="select"> <select id="20th">
+                            <option value="Null"></option>
+                            <option value="Max Verstappen">Max Verstappen</option>
+                            <option value="Sergio Perez">Sergio Perez</option>
+                            <option value="George Russell">George Russell</option>
+                            <option value="Lewis Hamilton">Lewis Hamilton</option>
+                            <option value="Carlos Sainz">Carlos Sainz</option>
+                            <option value="Charles Leclerc">Charles Leclerc</option>
+                            <option value="Oscar Piastri">Oscar Piastri</option>
+                            <option value="Lando Norris">Lando Norris</option>
+                            <option value="Lance Stroll">Lance Stroll</option>
+                            <option value="Fernando Alonso">Fernando Alonso</option>
+                            <option value="Pierre Gasly">Pierre Gasly</option>
+                            <option value="Esteban Ocon">Esteban Ocon</option>
+                            <option value="Logan Sargeant">Logan Sargeant</option>
+                            <option value="Alexander Albon">Alexander Albon</option>
+                            <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                            <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                            <option value="Zhou Guanyu">Zhou Guanyu</option>
+                            <option value="Valtteri Bottas">Valtteri Bottas</option>
+                            <option value="Kevin Magnussen">Kevin Magnussen</option>
+                            <option value="Nico Hulkenberg">Nico Hulkenberg</option>
+                        </select>
+                    </div>
+                </div>
+              </div>
+              </div>
         <button class="button mb-2 is-danger" onclick="emptyLocalStorage()">Delete all race Data?</button>
         <button class="button is-primary add-race-border" onclick="addNewRace()">Submit</button>
       </div>
+
+
 
 
       <table class="table is-bordered is-fullwidth mt-3">
