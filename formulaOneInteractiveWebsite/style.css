@@ -1,3 +1,29 @@
+@font-face { /* Imports the F1 Font */
+    font-family: 'FormulaOne';
+    src: url('Fonts/Formula1-Regular.otf') format('opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'FormulaOne';
+}
+
+.button {
+    font-family: 'FormulaOne';
+}
+
+.image {
+    margin: 75px;
+}
+
+.is-huge {
+    width: 600px;
+    height: 300px;
+    border-color: black;
+    font-size: 40px;
+}
+
 .add-race-border {
     border: black 2px solid;
     width: 100%;
@@ -6,15 +32,23 @@
 
 .number-table-header {width: 5%;}
 
-.race-table-header {width: 25%;}
+.race-table-header {width: 20%;}
 
 .winner-table-header {width: 25%;}
 
 .constructor-table-header {width: 25%;}
 
-.laps-table-header {width: 10%;}
+.date-table-header {Width: 10%;}
+
+.laps-table-header {width: 5%;}
 
 .time-table-header {Width: 10%;}
+
+.fullheight {
+    height: 100%;
+}
+
+
 
 .stat-button {
     border: none;

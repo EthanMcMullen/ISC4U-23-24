@@ -1,7 +1,31 @@
 let gameNumber = 1;
 let currentSorted = [false, false]; /*First boolean is indicating if a number has been selected, 2nd in indicating if its currently sorted up or down*/
 let gameList = JSON.parse(localStorage.getItem('gameList')) || [];
+console.log(gameList);
 reWriteTable(gameList)
+
+const driverTeams = {
+    'Max Verstappen': 'RedBull',
+    'Sergio Perez': 'RedBull',
+    'George Russell': 'Mercedes',
+    'Lewis Hamilton': 'Mercedes',
+    'Carlos Sainz': 'Ferrari',
+    'Charles Leclerc': 'Ferrari',
+    'Oscar Piastri': 'McLaren',
+    'Lando Norris': 'McLaren',
+    'Lance Stroll': 'Aston Martin',
+    'Fernando Alonso': 'Aston Martin',
+    'Pierre Gasly': 'Alpine',
+    'Esteban Ocon': 'Alpine',
+    'Logan Sargeant': 'Williams',
+    'Alexander Albon': 'Williams',
+    'Yuki Tsunoda': 'AlphaTauri',
+    'Daniel Ricciardo': 'AlphaTauri',
+    'Zhou Guanyu': 'Alfa Romeo',
+    'Valtteri Bottas': 'Alfa Romeo',
+    'Kevin Magnussen': 'Haas',
+    'Nico Hulkenberg': 'Haas'
+};
 
 
 
@@ -10,74 +34,102 @@ function saveGameData() {
 }
 
 function addNewRace() {
-    let grandPrix = document.getElementById('grandPrix').value;
-    let laps = document.getElementById('laps').value;
-    let time = document.getElementById('time').value;
-    let date = getPNum('date')
-    let winner = getPNum('winner');
-    let pTwo= getPNum('2nd');
-    let pThree= getPNum('3rd');
-    let pFour= getPNum('4th');
-    let pFive= getPNum('5th');
-    let pSix= getPNum('6th');
-    let pSeven= getPNum('7th');
-    let pEight= getPNum('8th');
-    let pNine= getPNum('9th');
-    let pTen= getPNum('10th');
-    let pEleven= getPNum('11th');
-    let pTwelve= getPNum('12th');
-    let pThirteen= getPNum('13th');
-    let pFourteen= getPNum('14th');
-    let pFivteen= getPNum('15th');
-    let pSixteen= getPNum('16th');
-    let pSeventeen= getPNum('17th');
-    let pEighteen= getPNum('18th');
-    let pNineteen= getPNum('19th');
-    let pTwenty= getPNum('20th')
+    let grandPrix = getValue('grandPrix')
+    let date = getValue('date')
+    let laps = getValue('laps')
+    let time = getValue('time')
+    let winner = getValue('winner')
+    let placements = [
+        'Null', // 'Null' are just so placements[2] = p2
+        'Null',
+        getValue('2nd'),
+        getValue('3rd'),
+        getValue('4th'),
+        getValue('5th'),
+        getValue('6th'),
+        getValue('7th'),
+        getValue('8th'),
+        getValue('9th'),
+        getValue('10th'),
+        getValue('11th'),
+        getValue('12th'),
+        getValue('13th'),
+        getValue('14th'),
+        getValue('15th'),
+        getValue('16th'),
+        getValue('17th'),
+        getValue('18th'),
+        getValue('19th'),
+        getValue('20th')
+    ];
 
-    addRow(grandPrix, winner, date, laps, time);
+    isEqual = checkIfEqual(placements);
+    if(!isEqual) {
+        addRow(grandPrix, date, laps, time, placements, winner);
+    } 
 }
 
-function getPNum(str) {
+function checkIfEqual(placements) {
+    let isEqual = false;
+    placements.forEach((el, index) => {
+        placements.forEach((el2, index2) => {
+            if(el !== 'Null' && el2 !== 'Null' && el === el2 && index !== index2) {
+                isEqual = true;
+            }
+        })
+    })
+    if(isEqual) {window.alert("You have at least one duplicate driver, please check to make sure the information you entered was correct")}
+
+    return isEqual;
+}
+
+function getValue(str) {
     return document.getElementById(str).value;
 }
 
-function setPNum(innerHtml, newRow) { /* Make it so p2-20 doesnt show on the main table with boolean */
+function insertToTable(innerHtml, newRow) { /* Make it so p2-20 doesnt show on the main table with boolean */
     element = document.createElement('td');
     element.innerText = innerHtml;
-    newRow.appendChild(newGameValue);
+    newRow.appendChild(element);
+}
+
+function setGameData(grandPrix, date, laps, time, placements, winner) {
+    let gameData = {
+        raceNumber: gameNumber,
+        grandPrix: grandPrix,
+        date: date,
+        laps: laps,
+        time: time,
+        placements: placements,
+        winningConstructor: teamCalculate(winner),
+        winner: winner
+    }
+
+    return gameData;
 }
 
 
-function addRow(grandPrix, winner, date, laps, time, pTwo, pThree, pFour, pFive, pSix, pSeven, pEight, pNine, pTen, pEleven, pTwelve, pThirteen, pFourteen, pFivteen, pSixteen, pSeventeen, pEighteen, pNineteen, pTwenty) {
+function addRow(grandPrix, date, laps, time, placements, winner) {
     let tableBody = document.getElementById('statsTableBody');
 
     let newRow = document.createElement('tr');
 
-    let newGameValue = document.createElement('td'); newGameValue.innerText = gameNumber; newRow.appendChild(newGameValue);
-    let newGrandPrixValue = document.createElement('td'); newGrandPrixValue.innerText = grandPrix; newRow.appendChild(newGrandPrixValue);
-    let newDateValue = document.createElement('td'); newDateValue.innerText = date; newRow.appendChild(newDateValue);
-    let newLapsValue = document.createElement('td'); newLapsValue.innerText = laps; newRow.appendChild(newLapsValue);
-    let newTimeValue = document.createElement('td'); newTimeValue.innerText = time.substring(0,2) + ":" + time.substring(2,4) + ":" + time.substring(4,6); newRow.appendChild(newTimeValue);
+    insertToTable(gameNumber, newRow); 
+    insertToTable(grandPrix, newRow); 
+    insertToTable(winner, newRow)
+    insertToTable(teamCalculate(winner), newRow)
+    insertToTable(date, newRow); 
+    insertToTable(laps, newRow);
+    insertToTable(time.substring(0,2) + ":" + time.substring(2,4) + ":" + time.substring(4,6), newRow);
     
-    setPNum(winner, newRow); setPNum(pTwo, newRow); setPNum(pThree, newRow); setPNum(pFour, newRow); setPNum(pFive, newRow); setPNum(pSix, newRow); setPNum(pSeven, newRow); setPNum(pEight, newRow); setPNum(pNine, newRow); setPNum(pTen, newRow)
-    setPNum(pEleven, newRow); setPNum(pTwelve, newRow); setPNum(pThirteen, newRow); setPNum(pFourteen, newRow); setPNum(pFivteen, newRow); setPNum(pSixteen, newRow); setPNum(pSeventeen, newRow); setPNum(pEighteen, newRow); setPNum(pNineteen, newRow); setPNum(pTwenty, newRow)
+    
+    //placements.forEach((el) => insertToTable(el, newRow));
 
-    let gameData = {
-        raceNumber: gameNumber,
-        grandPrix: grandPrix,
-        winner: winner,
-        winningConstructor: winningConstructor,
-        laps: laps,
-        time: time,
-        pTwo: pTwo, pThree: pThree, pFour: pFour, pFive: pFive, pSix: pSix, pSeven: pSeven, pEight: pEight, pNine: pNine, pTen: pTen, pEleven: pEleven, pTwelve: pTwelve, pThirteen: pThirteen, pFourteen: pFourteen, pFivteen: pFivteen, pSixteen: pSixteen, pSeventeen: pSeventeen, pEighteen: pEighteen, pNineteen: pNineteen, pTwenty: pTwenty
-    }
+    let gameData = setGameData(grandPrix, date, laps, time, placements, winner);
     gameNumber++;
-
     gameList.push(gameData);
     tableBody.appendChild(newRow);
     saveGameData();
-    document.getElementById('grandPrix').value = ''; document.getElementById('winner').value = ''; document.getElementById('laps').value = ''; document.getElementById('time').value = ''; document.getElementById('winningConstructor').value = '';
 }
 
 
@@ -119,8 +171,8 @@ function reWriteTable(newgameList) {
     gameNumber = 1;
 
     newgameList.forEach(data => {
-        addRow(data.grandPrix, data.winner, data.winningConstructor, data.laps, data.time, data.p1, data.p2);
-      });
+        addRow(data.grandPrix, data.date, data.laps, data.time, data.placements, data.winner);
+      }); 
     saveGameData();
 }
 
@@ -142,4 +194,58 @@ function deleteRace(index) { /* work in progress */
 function toggleInputSection() {
     let inputSection = document.getElementById('inputSection');
     inputSection.style.display = (inputSection.style.display === 'none') ? 'block' : 'none';
+}
+
+function createDriverArray(driverName) {
+    let driverResults = [];
+
+    gameList.forEach((el) => {
+
+        let position = el.placements.indexOf(driverName);
+        let result;
+
+        if(el.winner === driverName) {
+            result = {
+                grandPrix: el.grandPrix,
+                position: 1,
+                score: 25
+            };
+        } else if (position !== -1) {
+            result = {
+                grandPrix: el.grandPrix,
+                position: position,
+                score: scoreCalculate(position)
+            };
+            driverResults.push(result);
+        }
+    });
+
+    return driverResults;
+}
+
+function createDriversChampionshipArray() {
+    const driversChampionship = [];
+
+    const driverPoints = {};
+    gameList.forEach((race) => {
+        race.placements.forEach((driver, position) => {
+            if (driver !== null) {
+                const points = scoreCalculate(position);
+                driverPoints[driver] = (driverPoints[driver] || 0) + points;
+            }
+        });
+    });
+}
+
+function createConstructorArray() {
+
+}
+
+function teamCalculate(driver) {
+    return driverTeams[driver] || 'N/A';
+}
+
+function scoreCalculate(position) { 
+    points = [25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0]
+    return points[position-1]
 }
