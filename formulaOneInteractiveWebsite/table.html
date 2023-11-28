@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css"> 
   <title>Race Stats</title>
 </head>
-<body>
+<body onload="updateBoard(gameList, 'Race')">
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href=" ://bulma.io">
@@ -31,22 +31,14 @@
           Race Stats
         </a>
   
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More Stats
-          </a>
-  
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              Drivers
-            </a>
-            <a class="navbar-item">
-              Teams
-            </a>
-            <a class="navbar-item">
-              Previous Years
-            </a>
-          </div>
+        <a href="driverStanding.html" a class="navbar-item">
+          Drivers
+        </a>
+
+        <a href="constructorStanding.html" a class="navbar-item">
+          Teams
+        </a>
+          
         </div>
       </div>
   
@@ -78,7 +70,7 @@
           </div>
           <div class="column">
             <label class="label">Date</label>
-            <input class="input" type="number" id="date" placeholder="MMDDYYYY">
+            <input class="input" type="number" id="date" placeholder="YYYYMMDD">
           </div>
           <div class="column">
             <label class="label">Time</label>
@@ -639,7 +631,9 @@
                 </div>
               </div>
               </div>
-        <button class="button mb-2 is-danger" onclick="emptyLocalStorage()">Delete all race Data?</button>
+        <button class="button mb-2 mt-2 is-danger" onclick="emptyLocalStorage()">Delete all race Data?</button>
+        <button class="button mb-2 mt-2 is-info" onclick="debugSave()">Debug Save</button>
+        <button class="button mb-2 mt-2 is-link" onclick="debugLoad()">Debug Load</button>
         <button class="button is-primary add-race-border" onclick="addNewRace()">Submit</button>
       </div>
 

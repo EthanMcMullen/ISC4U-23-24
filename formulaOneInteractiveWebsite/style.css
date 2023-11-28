@@ -5,8 +5,17 @@
     font-style: normal;
 }
 
-.a {
+a {
     text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: blue;
+}
+
+
+.td {
     color: black;
 }
 

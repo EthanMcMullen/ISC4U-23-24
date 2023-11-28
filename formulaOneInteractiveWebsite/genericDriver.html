@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css"> 
+  <title>Race Stats</title>
+</head>
+<body onload="updateBoard(gameList, 'GenericDriver')">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href=" ://bulma.io">
+        <img src="images/f1Logo.png" width="70" height="0">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a href="home.html" class="navbar-item">
+          Home
+        </a>
+  
+        <a href="table.html" class="navbar-item">
+          Race Stats
+        </a>
+  
+        <a href="driverStanding.html" a class="navbar-item">
+          Drivers
+        </a>
+        
+        <a href="constructorStanding.html" a class="navbar-item">
+          Teams
+        </a>
+          
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title" id="driverTitle"></h1>
+      <h1 class="subtitle" id="driverTeam"></h1>
+      <table class="table is-bordered is-fullwidth mt-3">
+        <thead>
+          <tr>
+            <th class="number-table-header table-header"><button class="stat-button numberButton"onclick="sortTable('grandPrix')">GrandPrix:</button></th>
+            <th class="race-table-header table-header"><button class="stat-button numberButton"onclick="sortTable('winner') ">Date:</button></th>
+            <th class="winner-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('winner')">Position:</button></th>
+            <th class="date-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('date')" >Points:</button></th>
+          </tr>
+        </thead>
+        <tbody id="statsTableBody">
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

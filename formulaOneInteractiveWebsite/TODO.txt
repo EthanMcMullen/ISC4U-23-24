@@ -1,0 +1,5 @@
+Fix Sort to work for all columns - Medium
+Pagenation - Hard
+Filter by date - Easy
+
+And i think thats it, now thats still gunna take 20 years but still
