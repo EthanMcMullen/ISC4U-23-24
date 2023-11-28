@@ -2,9 +2,8 @@ let gameNumber = 1;
 let currentSorted = [false, false]; /*First boolean is indicating if a number has been selected, 2nd in indicating if its currently sorted up or down*/
 let gameList = JSON.parse(localStorage.getItem('gameList')) || [];
 console.log(gameList);
-reWriteTable(gameList)
 
-const driverTeams = {
+let driverTeams = {
     'Max Verstappen': 'RedBull',
     'Sergio Perez': 'RedBull',
     'George Russell': 'Mercedes',
@@ -27,7 +26,43 @@ const driverTeams = {
     'Nico Hulkenberg': 'Haas'
 };
 
+let teams = [
+    'RedBull',
+    'Mercedes',
+    'Ferrari',
+    'McLaren',
+    'Aston Martin',
+    'Alpine',
+    'Williams',
+    'AlphaTauri',
+    'Alfa Romeo',
+    'Haas'
+];
 
+let drivers = [
+    'Max Verstappen',
+    'Sergio Perez',
+    'George Russell',
+    'Lewis Hamilton',
+    'Carlos Sainz',
+    'Charles Leclerc',
+    'Oscar Piastri',
+    'Lando Norris',
+    'Lance Stroll',
+    'Fernando Alonso',
+    'Pierre Gasly',
+    'Esteban Ocon',
+    'Logan Sargeant',
+    'Alexander Albon',
+    'Yuki Tsunoda',
+    'Daniel Ricciardo',
+    'Zhou Guanyu',
+    'Valtteri Bottas',
+    'Kevin Magnussen',
+    'Nico Hulkenberg'
+];
+
+reWriteTable(gameList)
 
 function saveGameData() {
     localStorage.setItem('gameList', JSON.stringify(gameList));
@@ -118,7 +153,7 @@ function addRow(grandPrix, date, laps, time, placements, winner) {
     insertToTable(grandPrix, newRow); 
     insertToTable(winner, newRow)
     insertToTable(teamCalculate(winner), newRow)
-    insertToTable(date, newRow); 
+    insertToTable(date.substring(0,2) + "/" + date.substring(2,4) + "/" + date.substring(4,8), newRow); 
     insertToTable(laps, newRow);
     insertToTable(time.substring(0,2) + ":" + time.substring(2,4) + ":" + time.substring(4,6), newRow);
     
@@ -226,18 +261,61 @@ function createDriverArray(driverName) {
 function createDriversChampionshipArray() {
     const driversChampionship = [];
 
-    const driverPoints = {};
     gameList.forEach((race) => {
-        race.placements.forEach((driver, position) => {
-            if (driver !== null) {
-                const points = scoreCalculate(position);
-                driverPoints[driver] = (driverPoints[driver] || 0) + points;
-            }
-        });
+        drivers.forEach((driver) => {
+            race.placements.forEach((driverChecking, position) => {
+                let result = {position: -1, score: 0, driver: "Null"};
+                if (driver !== null && driver === driverChecking) {
+                    const points = scoreCalculate(position);
+                    result = {
+                        position: position,
+                        score: points,
+                        driver: driver,
+                        grandPrix: race.grandPrix
+                    };
+                } else if (driver !== null && driver === race.winner) {
+                    result = {
+                        position: 1,
+                        score: 25,
+                        driver: driver,
+                        grandPrix: race.grandPrix
+                    }
+                }
+            });
+            driversChampionship.push(result);
+        })
+    });
+    return driversChampionship;
+}
+
+function createConstructorArray(constructorName) { // Return an array that has the points, 
+    let driversInTeam = {driver1: "Null", driver2: "Null"};
+    let constructorArray = [];
+
+    drivers.forEach((el2) => {
+        if (el2.teamCalculate === constructorName && driversInTeam.driver1 === "Null") {
+          driversInTeam.driver1 = el2;
+        } else if (el2.teamCalculate === constructorName && driversInTeam.driver1 !== "Null") {
+            driversInTeam.driver2 = el2;
+        }
+    });
+
+    let driver1 = createDriverArray(driversInTeam.driver1);
+    let driver2 = createDriverArray(driversInTeam.driver2);
+
+    driver1.forEach((el, index) => {
+        let result;
+        result = {
+            points: el.score + driver2[index].score,
+            driverPosition1: el.position,
+            driverPosition2: driver2[index].score,
+            grandPrix:  el.grandPrix
+        }
+        constructorArray.push(result)
     });
 }
 
-function createConstructorArray() {
+function createConstructorChampionshipArray() {
 
 }
 
