@@ -635,10 +635,25 @@
         <button class="button mb-2 mt-2 is-info" onclick="debugSave()">Debug Save</button>
         <button class="button mb-2 mt-2 is-link" onclick="debugLoad()">Debug Load</button>
         <button class="button is-primary add-race-border" onclick="addNewRace()">Submit</button>
+
       </div>
 
+      <br>
 
-
+      <button class="button is-info mb-4" onclick="filterDateRangeSection()">Filter by date?</button>
+      <div id="filterRange" style="display: none;">
+        <div class="columns">
+        <div class="column">
+          <label class="label">Beginning Date</label>
+          <input class="input" type="date" id="dateStart" placeholder="YYYY-MM-DD">
+        </div>
+        <div class="column">
+          <label class="label">End Date</label>
+          <input class="input" type="date" id="dateEnd" placeholder="YYYY-MM-DD">
+        </div>
+      </div>
+      <button class="button is-info add-race-border" onclick="filterGameList('Race')">Search</button>
+    </div>
 
       <table class="table is-bordered is-fullwidth mt-3">
         <thead>

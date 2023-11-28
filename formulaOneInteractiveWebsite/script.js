@@ -1,8 +1,11 @@
 let gameNumber = JSON.parse(localStorage.getItem('gameNumber')) || 1;
-let currentSorted = [false, false]; /*First boolean is indicating if a number has been selected, 2nd in indicating if its currently sorted up or down*/
+let raceSorted = [false, false]; /*First boolean is indicating if a number has been selected, 2nd in indicating if its currently sorted up or down*/
+let constructorSorted = [false, false];
+let driverSorted = [false, false];
+let constructorChampionshipSorted = [false, false];
+let driversChampionshipSorted = [false, false];
 let gameList = JSON.parse(localStorage.getItem('gameList')) || [];
 console.log(gameList);
-let localGameList = gameList
 
 let driverTeams = {
     'Max Verstappen': 'RedBull',
@@ -163,7 +166,7 @@ function addRow(grandPrix, date, laps, time, placements, winner) {
     let gameData = setGameData(grandPrix, date, laps, time, placements, winner);
     gameNumber++;
     gameList.push(gameData)
-    updateBoard(localGameList, "Race")
+    updateBoard(gameList, "Race")
 }
 
 function updateBoard(array, type) {
@@ -182,7 +185,7 @@ function updateBoard(array, type) {
             tableBody.appendChild(newRow)
         })
     } else if(type === 'Constructor') {
-        let constructorChampionshipArray = createConstructorChampionshipArray();
+        let constructorChampionshipArray = createConstructorChampionshipArray(array);
         console.log('made it')
         constructorChampionshipArray.forEach((team) => {
             let newRow = document.createElement('tr');
@@ -194,7 +197,7 @@ function updateBoard(array, type) {
             tableBody.appendChild(newRow);
         });
     } else if(type === 'Driver') {
-        let driverChampionshipArray = createDriversChampionshipArray();
+        let driverChampionshipArray = createDriversChampionshipArray(array);
         console.log('made it')
         driverChampionshipArray.forEach((driver) => {
             let newRow = document.createElement('tr');
@@ -212,7 +215,7 @@ function updateBoard(array, type) {
         teamDrivers = getDriversFromTeam(constructor)
         document.getElementById('driver1').innerHTML = teamDrivers.driver1 + " Position:";
         document.getElementById('driver2').innerHTML = teamDrivers.driver2 + " Position:";
-        let genericConstructorArray = createConstructorArray(constructor);
+        let genericConstructorArray = createConstructorArray(constructor, array);
         genericConstructorArray.forEach((race) => {
             let newRow = document.createElement('tr');
             insertToTable(race.grandPrix, newRow);
@@ -228,11 +231,11 @@ function updateBoard(array, type) {
         let driver = searchParams.get("driver")
         document.getElementById('driverTitle').innerText = driver
         document.getElementById('driverTeam').innerText = "Constructor: " + teamCalculate(driver)
-        let driverArray = createDriverArray(driver)
+        let driverArray = createDriverArray(driver, array)
         driverArray.forEach((race) => {
             let newRow = document.createElement('tr');
             insertToTable(race.grandPrix, newRow)
-            insertToTable(race.date, newRow)
+            insertToTable(race.date.substring(0,4) + "/" + race.date.substring(4,6) + "/" + race.date.substring(6,8), newRow)
             insertToTable(race.position, newRow)
             insertToTable(race.score, newRow)
             tableBody.appendChild(newRow)
@@ -243,33 +246,34 @@ function updateBoard(array, type) {
 }
 
 
-function sortTable(column) {
-    console.log(localGameList)
-    console.log(column)
-    if(!currentSorted[0] || !currentSorted[1]) {
-        localGameList.sort((a,b) => { 
-            if(numValuedVariables.includes(column)) {
-                let numA = parseFloat(a[column]);
-                let numB = parseFloat(b[column]);
-                return numA > numB ? 1 : -1;
-            }
-            return a[column] > b[column] ? 1: -1;
-        });
-        currentSorted[0] = true
-        currentSorted[1] = true
-    } else {
-        localGameList.sort((a,b) => { 
-            if(numValuedVariables.includes(column)) {
-                let numA = parseFloat(a[column]);
-                let numB = parseFloat(b[column]);
-                return numA < numB ? 1 : -1;
-            }
-            return a[column] < b[column] ? 1: -1
-        });
-        currentSorted[1] = false
-    }
-    console.log(localGameList);
-    updateBoard(localGameList, 'Race')
+function sortTable(column, type) {
+    let localGameList = gameList
+    if(type === 'Race') {
+        if(!raceSorted[0] || !raceSorted[1]) {
+            localGameList.sort((a,b) => { 
+                if(numValuedVariables.includes(column)) {
+                    let numA = parseFloat(a[column]);
+                    let numB = parseFloat(b[column]);
+                    return numA > numB ? 1 : -1;
+                }
+                return a[column] > b[column] ? 1: -1;
+            });
+            raceSorted[0] = true
+            raceSorted[1] = true
+        } else {
+            localGameList.sort((a,b) => { 
+                if(numValuedVariables.includes(column)) {
+                    let numA = parseFloat(a[column]);
+                    let numB = parseFloat(b[column]);
+                    return numA < numB ? 1 : -1;
+                }
+                return a[column] < b[column] ? 1: -1
+            });
+            currentSorted[1] = false
+        }
+        console.log(localGameList);
+        updateBoard(localGameList, 'Race')
+    } 
 }
 
 function emptyLocalStorage() {
@@ -278,7 +282,6 @@ function emptyLocalStorage() {
         localStorage.removeItem('gameNumber')
         gameNumber = 1;
         gameList = [];
-        localGameList = gameList;
         updateBoard(gameList, "Race");
     }
 }
@@ -295,10 +298,56 @@ function toggleInputSection() {
     inputSection.style.display = (inputSection.style.display === 'none') ? 'block' : 'none';
 }
 
-function createDriverArray(driverName) {
+function filterDateRangeSection() {
+    let filterSection = document.getElementById('filterRange');
+    filterSection.style.display = (filterSection.style.display === 'none') ? 'block' : 'none';
+}
+
+function filterGameList(type) {
+    let startDate = document.getElementById('dateStart').value;
+    let endDate = document.getElementById('dateEnd').value;
+    console.log(startDate + " - " + endDate)
+
+    let startDateNum = parseFloat(startDate.substring(0,4) + startDate.substring(5,7) + startDate.substring(8,10));
+    let endDateNum = parseFloat(endDate.substring(0,4) + endDate.substring(5,7) + endDate.substring(8,10));
+
+    console.log(startDateNum + " - " + endDateNum)
+
+    let filteredGameList = gameList.filter((race) => {
+        raceDate = parseFloat(race.date);
+        return raceDate >= startDateNum && raceDate <= endDateNum;
+    })
+
+    console.log(filteredGameList);
+
+    if(startDateNum < endDateNum) {
+        if(isNaN(startDate) && isNaN(startDate)) {
+            updateBoard(filteredGameList, type);
+        } else window.alert("Make sure Each date range is filled in")
+    } else {
+        window.alert("End date smaller than the start date, Please Re-Enter the dates ensuring that the End Date is greater than the Start Date")
+    }
+}
+
+{/* <button class="button is-primary mb-4" onclick="filterDateRange()">Filter by date?</button>
+<div id="filterRange" style="display: none;">
+  <div class="columns">
+  <div class="column">
+    <label class="label">Beginning Date</label>
+    <input class="input" type="date" id="dateStart" placeholder="YYYY-MM-DD">
+  </div>
+  <div class="column">
+    <label class="label">End Date</label>
+    <input class="input" type="date" id="dateEnd" placeholder="YYYY-MM-DD">
+  </div>
+</div>
+<button class="button is-primary add-race-border" onclick="filterGameList()">Search</button>
+</div> */}
+
+function createDriverArray(driverName, games) {
     let driverResults = [];
     
-    gameList.forEach((el) => {
+    games.forEach((el) => {
         let position = el.placements.indexOf(driverName);
         let result = {driver: 'Driver Not Found!', grandPrix: 'Driver Not Found!', position: -1, score: 0};
 
@@ -327,13 +376,13 @@ function createDriverArray(driverName) {
 
 
 
-function createDriversChampionshipArray() { // Definitly wierd hollup
+function createDriversChampionshipArray(games) { // Definitly wierd hollup
     const driversChampionship = [];
 
     drivers.forEach((driver) => {
         let points = 0;
         let team = teamCalculate(driver)
-        gameList.forEach((race) => {
+        games.forEach((race) => {
             race.placements.forEach((driverChecking, position) => {
                 if (driver === driverChecking) {
                         points += scoreCalculate(position)
@@ -367,13 +416,13 @@ function createDriversChampionshipArray() { // Definitly wierd hollup
 
 
 
-function createConstructorArray(constructorName) { // Return an array that has the points, 
+function createConstructorArray(constructorName, games) { // Return an array that has the points, 
     console.log(gameList)
     let driversInTeam = getDriversFromTeam(constructorName);
     let constructorArray = [];
 
-    let driver1 = createDriverArray(driversInTeam.driver1);
-    let driver2 = createDriverArray(driversInTeam.driver2);
+    let driver1 = createDriverArray(driversInTeam.driver1, games);
+    let driver2 = createDriverArray(driversInTeam.driver2, games);
 
 
     driver1.forEach((el, index) => {
@@ -411,14 +460,14 @@ function getDriversFromTeam(team) {
 
 
 
-function createConstructorChampionshipArray() {
+function createConstructorChampionshipArray(games) {
     let constructorChampionshipArray = [];
 
     teams.forEach((team) => {
         let driversInTeam = getDriversFromTeam(team);
         let driver1 = driversInTeam.driver1;
         let driver2 = driversInTeam.driver2;
-        let points = calculateTeamPoints(driver1, driver2);
+        let points = calculateTeamPoints(driver1, driver2, games);
 
         let constructorResult = {
             team: team,
@@ -444,7 +493,7 @@ function createConstructorChampionshipArray() {
 
 
 
-function calculateTeamPoints(driver1, driver2) {
+function calculateTeamPoints(driver1, driver2, games) {
     let totalPoints = 0;
     let driver1Points = 0;
     let driver2Points = 0;

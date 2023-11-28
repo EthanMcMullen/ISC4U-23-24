@@ -57,17 +57,37 @@
     </div>
   </nav>
 
+  
+
   <section class="section">
     <div class="container">
       <h1 class="title" id="teamTitle"></h1>
+
+      <br>
+
+      <button class="button is-info mb-4" onclick="filterDateRangeSection()">Filter by date?</button>
+      <div id="filterRange" style="display: none;">
+        <div class="columns">
+        <div class="column">
+          <label class="label">Beginning Date</label>
+          <input class="input" type="date" id="dateStart" placeholder="YYYY-MM-DD">
+        </div>
+        <div class="column">
+          <label class="label">End Date</label>
+          <input class="input" type="date" id="dateEnd" placeholder="YYYY-MM-DD">
+        </div>
+      </div>
+      <button class="button is-info add-race-border" onclick="filterGameList('GenericConstructor')">Search</button>
+    </div>
+
       <table class="table is-bordered is-fullwidth mt-3">
         <thead>
           <tr>
             <th class="number-table-header table-header"><button class="stat-button numberButton"onclick="sortTable('grandPrix')">GrandPrix:</button></th>
-            <th class="race-table-header table-header"><button class="stat-button numberButton"onclick="sortTable('winner') "><div  id="driver1"></div></button></th>
-            <th class="winner-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('winner')"><div id="driver2"></div></button></th>
+            <th class="race-table-header table-header"><button class="stat-button numberButton"><div  id="driver1"></div></button></th>
+            <th class="winner-table-header table-header"><button class="stat-button numberButton"><div id="driver2"></div></button></th>
             <th class="date-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('date')" >Date</button></th>
-            <th class="date-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('date')" >Total Points:</button></th>
+            <th class="date-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('points', 'GenericConstructor')" >Total Points:</button></th>
           </tr>
         </thead>
         <tbody id="statsTableBody">
