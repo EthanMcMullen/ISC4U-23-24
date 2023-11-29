@@ -2,10 +2,13 @@ let gameNumber = JSON.parse(localStorage.getItem('gameNumber')) || 1;
 let raceSorted = [false, false]; /*First boolean is indicating if a number has been selected, 2nd in indicating if its currently sorted up or down*/
 let constructorSorted = [false, false];
 let driverSorted = [false, false];
-let constructorChampionshipSorted = [false, false];
-let driversChampionshipSorted = [false, false];
+
 let gameList = JSON.parse(localStorage.getItem('gameList')) || [];
+let filteredGames = gameList;
 console.log(gameList);
+constructorFirstTime = true;
+raceFirstTime = true;
+driverFirstTime = true;
 
 let driverTeams = {
     'Max Verstappen': 'RedBull',
@@ -66,7 +69,7 @@ let drivers = [
     'Nico Hulkenberg'
 ];
 
-let numValuedVariables = ['time', 'laps', 'raceNumber', 'date'];
+let numValuedVariables = ['time', 'laps', 'raceNumber', 'date', 'driverPosition1', 'driverPosition2'];
 
 function saveGameData() {
     localStorage.setItem('gameList', JSON.stringify(gameList));
@@ -172,6 +175,9 @@ function addRow(grandPrix, date, laps, time, placements, winner) {
 function updateBoard(array, type) {
     let tableBody = document.getElementById('statsTableBody');
     tableBody.innerHTML = '';
+    let minusIcon = document.createElement('i');
+    minusIcon.classList.add('fa-solid', 'fa-minus');
+
     if(type === 'Race') {
         array.forEach((race) => {
             let newRow = document.createElement('tr');
@@ -213,8 +219,19 @@ function updateBoard(array, type) {
         let constructor = searchParams.get("constructor")
         document.getElementById('teamTitle').innerText = constructor
         teamDrivers = getDriversFromTeam(constructor)
-        document.getElementById('driver1').innerHTML = teamDrivers.driver1 + " Position:";
-        document.getElementById('driver2').innerHTML = teamDrivers.driver2 + " Position:";
+
+        if(constructorFirstTime) {
+            document.getElementById('driver1').innerHTML = teamDrivers.driver1 + " Position: ";
+            document.getElementById('driver2').innerHTML = teamDrivers.driver2 + " Position: ";
+            let minusIcon = document.createElement('i');
+            minusIcon.classList.add('fa-solid', 'fa-minus'); minusIcon.id = 'driverPosition1'
+            let minusIcon2 = document.createElement('i');
+            minusIcon2.classList.add('fa-solid', 'fa-minus'); minusIcon2.id = 'driverPosition2'
+            document.getElementById('driver1').appendChild(minusIcon)
+            document.getElementById('driver2').appendChild(minusIcon2)
+            constructorFirstTime = false;
+        }
+        
         let genericConstructorArray = createConstructorArray(constructor, array);
         genericConstructorArray.forEach((race) => {
             let newRow = document.createElement('tr');
@@ -247,33 +264,156 @@ function updateBoard(array, type) {
 
 
 function sortTable(column, type) {
-    let localGameList = gameList
+    let tempGames = filteredGames
+    gameList = JSON.parse(localStorage.getItem('gameList')) || [];
+    
     if(type === 'Race') {
         if(!raceSorted[0] || !raceSorted[1]) {
-            localGameList.sort((a,b) => { 
-                if(numValuedVariables.includes(column)) {
-                    let numA = parseFloat(a[column]);
-                    let numB = parseFloat(b[column]);
-                    return numA > numB ? 1 : -1;
-                }
-                return a[column] > b[column] ? 1: -1;
-            });
-            raceSorted[0] = true
-            raceSorted[1] = true
-        } else {
-            localGameList.sort((a,b) => { 
+            updateArrows(column, 'Race', true)
+            tempGames.sort((a,b) => { 
                 if(numValuedVariables.includes(column)) {
                     let numA = parseFloat(a[column]);
                     let numB = parseFloat(b[column]);
                     return numA < numB ? 1 : -1;
                 }
-                return a[column] < b[column] ? 1: -1
+                return a[column] < b[column] ? 1: -1;
             });
-            currentSorted[1] = false
+            raceSorted[0] = true
+            raceSorted[1] = true
+        } else {
+            updateArrows(column, 'Race', false)
+            tempGames.sort((a,b) => { 
+                if(numValuedVariables.includes(column)) {
+                    let numA = parseFloat(a[column]);
+                    let numB = parseFloat(b[column]);
+                    return numA > numB ? 1 : -1;
+                }
+                return a[column] > b[column] ? 1: -1
+            });
+            raceSorted[1] = false
         }
-        console.log(localGameList);
-        updateBoard(localGameList, 'Race')
-    } 
+        updateBoard(tempGames, 'Race')
+
+    } else if (type === 'GenericConstructor') {
+        let url = window.location.search;
+        let searchParams = new URLSearchParams(url);
+        let constructor = searchParams.get("constructor")
+        teamDrivers = getDriversFromTeam(constructor)
+        let genericConstructorArray = createConstructorArray(constructor, gameList);
+
+        if(!constructorSorted[0] || !constructorSorted[1]) {
+            updateArrows(column, 'GenericConstructor', true)
+            genericConstructorArray.sort((a,b) => { 
+                if(numValuedVariables.includes(column)) {
+                    let numA = parseFloat(a[column]);
+                    let numB = parseFloat(b[column]);
+                    return numA < numB ? 1 : -1;
+                }
+                return a[column] < b[column] ? 1: -1;
+            });
+            constructorSorted[0] = true
+            constructorSorted[1] = true
+        } else {
+            updateArrows(column, 'GenericConstructor', false)
+            genericConstructorArray.sort((a,b) => { 
+                if(numValuedVariables.includes(column)) {
+                    let numA = parseFloat(a[column]);
+                    let numB = parseFloat(b[column]);
+                    return numA > numB ? 1 : -1;
+                }
+                return a[column] > b[column] ? 1: -1
+            });
+            constructorSorted[1] = false
+        }
+
+        let gameListGenericConstructorArray = [];
+        genericConstructorArray.forEach((constructorRace, index) => {
+            tempGames.forEach((race) => {
+                if(constructorRace.grandPrix === race.grandPrix && constructorRace.date === race.date) {
+                    gameListGenericConstructorArray[index] = race;
+                }
+            });
+        });
+
+        updateBoard(gameListGenericConstructorArray, 'GenericConstructor')
+    } else if (type === 'GenericDriver') {
+        
+        let url = window.location.search;
+        let searchParams = new URLSearchParams(url);
+        let driver = searchParams.get("driver")
+        let driverArray = createDriverArray(driver, tempGames)
+
+        if(!constructorSorted[0] || !constructorSorted[1]) {
+            updateArrows(column, 'GenericDriver', true)
+            driverArray.sort((a,b) => { 
+                if(numValuedVariables.includes(column)) {
+                    let numA = parseFloat(a[column]);
+                    let numB = parseFloat(b[column]);
+                    return numA < numB ? 1 : -1;
+                }
+                return a[column] < b[column] ? 1: -1;
+            });
+            constructorSorted[0] = true
+            constructorSorted[1] = true
+        } else {
+            updateArrows(column, 'GenericDriver',true)
+            driverArray.sort((a,b) => { 
+                if(numValuedVariables.includes(column)) {
+                    let numA = parseFloat(a[column]);
+                    let numB = parseFloat(b[column]);
+                    return numA > numB ? 1 : -1;
+                }
+                return a[column] > b[column] ? 1: -1
+            });
+            constructorSorted[1] = false
+        }
+
+        let gameListGenericDriverArray = [];
+        driverArray.forEach((driverRace, index) => {
+            tempGames.forEach((race) => {
+                if(driverRace.grandPrix === race.grandPrix && driverRace.date === race.date) {
+                    gameListGenericDriverArray[index] = race;
+                }
+            });
+        });
+
+        updateBoard(gameListGenericDriverArray, 'GenericDriver')
+    }
+}
+
+function updateArrows(column, type, isUp) {
+    if(type === 'GenericConstructor') {
+
+        document.getElementById('driverPosition1').classList = ['fa-solid fa-minus'];
+        document.getElementById('driverPosition2').classList = ['fa-solid fa-minus'];
+        document.getElementById('date').classList = ['fa-solid fa-minus'];
+        document.getElementById('points').classList = ['fa-solid fa-minus'];
+
+       
+        if(isUp) document.getElementById(column).classList = ['fa-solid fa-down-long']
+
+        else document.getElementById(column).classList = ['fa-solid fa-up-long']
+
+    } else if (type === 'GenericDriver') {
+        document.getElementById('date').classList = ['fa-solid fa-minus'];
+        document.getElementById('position').classList = ['fa-solid fa-minus'];
+        document.getElementById('score').classList = ['fa-solid fa-minus'];
+
+        if(isUp) document.getElementById(column).classList = ['fa-solid fa-down-long']
+
+        else document.getElementById(column).classList = ['fa-solid fa-up-long']
+
+    } else if (type === 'Race') {
+        document.getElementById('tabledate').classList = ['fa-solid fa-minus'];
+        document.getElementById('tablelaps').classList = ['fa-solid fa-minus'];
+        document.getElementById('tabletime').classList = ['fa-solid fa-minus'];
+
+        column = 'table' + column
+        if(isUp) document.getElementById(column).classList = ['fa-solid fa-down-long']
+
+        else document.getElementById(column).classList = ['fa-solid fa-up-long']
+    }
+    
 }
 
 function emptyLocalStorage() {
@@ -322,27 +462,13 @@ function filterGameList(type) {
 
     if(startDateNum < endDateNum) {
         if(isNaN(startDate) && isNaN(startDate)) {
+            filteredGames = filteredGameList;
             updateBoard(filteredGameList, type);
         } else window.alert("Make sure Each date range is filled in")
     } else {
         window.alert("End date smaller than the start date, Please Re-Enter the dates ensuring that the End Date is greater than the Start Date")
     }
 }
-
-{/* <button class="button is-primary mb-4" onclick="filterDateRange()">Filter by date?</button>
-<div id="filterRange" style="display: none;">
-  <div class="columns">
-  <div class="column">
-    <label class="label">Beginning Date</label>
-    <input class="input" type="date" id="dateStart" placeholder="YYYY-MM-DD">
-  </div>
-  <div class="column">
-    <label class="label">End Date</label>
-    <input class="input" type="date" id="dateEnd" placeholder="YYYY-MM-DD">
-  </div>
-</div>
-<button class="button is-primary add-race-border" onclick="filterGameList()">Search</button>
-</div> */}
 
 function createDriverArray(driverName, games) {
     let driverResults = [];
@@ -373,8 +499,6 @@ function createDriverArray(driverName, games) {
     });
     return driverResults;
 }
-
-
 
 function createDriversChampionshipArray(games) { // Definitly wierd hollup
     const driversChampionship = [];
@@ -414,10 +538,7 @@ function createDriversChampionshipArray(games) { // Definitly wierd hollup
     return driversChampionship;
 }
 
-
-
 function createConstructorArray(constructorName, games) { // Return an array that has the points, 
-    console.log(gameList)
     let driversInTeam = getDriversFromTeam(constructorName);
     let constructorArray = [];
 
@@ -441,8 +562,6 @@ function createConstructorArray(constructorName, games) { // Return an array tha
     return constructorArray
 }
 
-
-
 function getDriversFromTeam(team) {
     let driversInTeam = {driver1: "Null", driver2: "Null"};
     
@@ -457,8 +576,6 @@ function getDriversFromTeam(team) {
 
     return driversInTeam;
 }
-
-
 
 function createConstructorChampionshipArray(games) {
     let constructorChampionshipArray = [];
@@ -491,8 +608,6 @@ function createConstructorChampionshipArray(games) {
     return sortedConstructorArray;
 }
 
-
-
 function calculateTeamPoints(driver1, driver2, games) {
     let totalPoints = 0;
     let driver1Points = 0;
@@ -518,13 +633,9 @@ function calculateTeamPoints(driver1, driver2, games) {
     return totalPoints;
 }
 
-
-
 function teamCalculate(driver) {
     return driverTeams[driver] || 'N/A';
 }
-
-
 
 function scoreCalculate(position) { 
     points = [25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0]

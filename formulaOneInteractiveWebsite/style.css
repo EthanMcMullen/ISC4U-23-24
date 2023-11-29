@@ -48,21 +48,19 @@ body {
 
 .race-table-header {width: 20%;}
 
-.winner-table-header {width: 25%;}
+.winner-table-header {width: 20%;}
 
 .constructor-table-header {width: 25%;}
 
 .date-table-header {Width: 10%;}
 
-.laps-table-header {width: 5%;}
+.laps-table-header {width: 10%;}
 
 .time-table-header {Width: 10%;}
 
 .fullheight {
     height: 100%;
 }
-
-
 
 .stat-button {
     border: none;

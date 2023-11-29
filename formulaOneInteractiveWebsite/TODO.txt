@@ -1,6 +1,9 @@
-Fix Sort to work for all columns - Medium
 Pagenation - Hard
 Fix up home page so it doesn't look awful
+Make the filtered gameList save on the instance of the browser
+Fix css Names for table widths
 
+Fix file structure
 And i think thats it, now thats still gunna take 20 years but still
+
 
