@@ -268,7 +268,7 @@ function updateBoard(array, type) {
                 tableBody.appendChild(newRow);
             }
         });    
-        createPaginationLinks(numPages, 'GenericConstructor')
+        createPaginationLinks(numPages, 'GenericConstructor', array)
 
     } else if(type === 'GenericDriver') {
         let url = window.location.search;
@@ -288,20 +288,20 @@ function updateBoard(array, type) {
                 tableBody.appendChild(newRow)
             }
         });
-        createPaginationLinks(numPages, 'GenericDriver')
+        createPaginationLinks(numPages, 'GenericDriver', array)
     }
 
     saveGameData();
 }
 
 // When pagination button is pressed, it runs this command, which sets the current page and updates the board
-function updatePagination(type, num) { 
+function updatePagination(type, num, array) { 
     currentPage = num
-    updateBoard(filteredGames, type)
+    updateBoard(array, type)
 }
 
 // Creates the pagination buttons, maximum of 5 plus the back and forward arrows
-function createPaginationLinks(numPages, type) { // Might not need type
+function createPaginationLinks(numPages, type, array) { // Might not need type
     paginationContainer = document.getElementById("paginationContainer")
     paginationContainer.innerHTML = ''
     startCurrent = parseFloat(currentPage);
@@ -311,7 +311,7 @@ function createPaginationLinks(numPages, type) { // Might not need type
         const button = document.createElement("button");
         button.classList.add("button", "is-link", "is-rounded", "pagination-button");
         button.textContent = '<';
-        createButtonFunctionality(button, (startCurrent-1), type)
+        createButtonFunctionality(button, (startCurrent-1), type, array)
         paginationContainer.appendChild(button);
     }
     for(i=1; i<=numPages; i++) {
@@ -319,24 +319,24 @@ function createPaginationLinks(numPages, type) { // Might not need type
         button.classList.add("button", "is-link", "is-rounded", "pagination-button");
         if(numPages <= 5) {
             button.textContent = i.toString();
-            createButtonFunctionality(button, i, type)
+            createButtonFunctionality(button, i, type, array)
             paginationContainer.appendChild(button);
         } else if (startCurrent <=2){
             if (i <= 4 || i === numPages) {
                 button.textContent = i.toString();
-                createButtonFunctionality(button, i, type)
+                createButtonFunctionality(button, i, type, array)
                 paginationContainer.appendChild(button);
             }
         } else if (startCurrent >= (numPages-2)) {
             if (i === 1 || (i >= (numPages-3))) {
                 button.textContent = i.toString();
-                createButtonFunctionality(button, i, type)
+                createButtonFunctionality(button, i, type, array)
                 paginationContainer.appendChild(button);
             }
         } else {
             if (i === 1 || ((i >= (startCurrent-1)) && (i <= (startCurrent+1))) || i === numPages) {
                 button.textContent = i.toString();
-                createButtonFunctionality(button, i, type)
+                createButtonFunctionality(button, i, type, array)
                 paginationContainer.appendChild(button);
             }
         }
@@ -346,15 +346,15 @@ function createPaginationLinks(numPages, type) { // Might not need type
         const button = document.createElement("button");
         button.classList.add("button", "is-link", "is-rounded", "pagination-button");
         button.textContent = '>';
-        createButtonFunctionality(button, (startCurrent+1), type)
+        createButtonFunctionality(button, (startCurrent+1), type, arary)
         paginationContainer.appendChild(button);
     }
 }
 
 // Assigns a runnable to the buttons created in createPaginationLinks
-function createButtonFunctionality (button, pageNumber, type) {
+function createButtonFunctionality (button, pageNumber, type, array) {
     button.addEventListener("click", function () {
-        updatePagination(type, pageNumber);
+        updatePagination(type, pageNumber, array);
     });
 }
 
