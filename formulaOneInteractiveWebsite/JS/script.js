@@ -4,6 +4,8 @@ let constructorSorted = [false, false];
 let driverSorted = [false, false];
 
 let gameList = JSON.parse(localStorage.getItem('gameList')) || [];
+
+
 let filteredGames = gameList;
 console.log(gameList);
 constructorFirstTime = true;
@@ -195,6 +197,8 @@ function updateBoard(array, type) {
     let minusIcon = document.createElement('i');
     minusIcon.classList.add('fa-solid', 'fa-minus');
 
+    console.log(array)
+
     let numGames = array.length;
     let numPages = Math.ceil(numGames / racesPerPage);
 
@@ -212,7 +216,7 @@ function updateBoard(array, type) {
                 tableBody.appendChild(newRow)
             }
         });
-        createPaginationLinks(numPages, 'Race')
+        createPaginationLinks(numPages, 'Race', array)
     } else if(type === 'Constructor') {
         let constructorChampionshipArray = createConstructorChampionshipArray(array);
         console.log('made it')
@@ -346,7 +350,7 @@ function createPaginationLinks(numPages, type, array) { // Might not need type
         const button = document.createElement("button");
         button.classList.add("button", "is-link", "is-rounded", "pagination-button");
         button.textContent = '>';
-        createButtonFunctionality(button, (startCurrent+1), type, arary)
+        createButtonFunctionality(button, (startCurrent+1), type, array)
         paginationContainer.appendChild(button);
     }
 }
