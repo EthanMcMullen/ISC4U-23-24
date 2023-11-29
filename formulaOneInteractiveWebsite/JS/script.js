@@ -75,11 +75,13 @@ let drivers = [
 
 let numValuedVariables = ['time', 'laps', 'raceNumber', 'date', 'driverPosition1', 'driverPosition2'];
 
+// Pushes the gameList to the Local Storage
 function saveGameData() {
     localStorage.setItem('gameList', JSON.stringify(gameList));
     localStorage.setItem('gameNumber', JSON.stringify(gameNumber))
 }
 
+// Called when submit race is clicked ont he HTML, gets all the values needed and packages them up into neat variables used by addRow
 function addNewRace() {
     let grandPrix = getValue('grandPrix')
     let date = getValue('date')
@@ -120,6 +122,7 @@ function addNewRace() {
     } 
 }
 
+// Checks if any two drivers entered are equal
 function checkIfEqual(placements, winner) {
     let isEqual = false;
     placements.forEach((el, index) => {
@@ -136,11 +139,13 @@ function checkIfEqual(placements, winner) {
     return isEqual;
 }
 
+// returns the value of the element with id str
 function getValue(str) {
     return document.getElementById(str).value;
 }
 
-function insertToTable(innerHtml, newRow, type) { /* Make it so p2-20 doesnt show on the main table with boolean */
+// inserts td elements to the table, creates them as links if they are driver or constructor which lead to their respective pages
+function insertToTable(innerHtml, newRow, type) {
     element = document.createElement('td');
     if(type === 'driver') {
         let link = document.createElement('a');
@@ -159,6 +164,7 @@ function insertToTable(innerHtml, newRow, type) { /* Make it so p2-20 doesnt sho
     newRow.appendChild(element);
 }
 
+// Takes the values of a game and returns an object with them
 function setGameData(grandPrix, date, laps, time, placements, winner) {
     let gameData = {
         gameNumber: gameNumber,
@@ -174,7 +180,7 @@ function setGameData(grandPrix, date, laps, time, placements, winner) {
     return gameData;
 }
 
-
+// Takes the values needed for a race, puts them in a object with setGameData, pushes it to gameData, and updates the board with the new gameList
 function addRow(grandPrix, date, laps, time, placements, winner) {  
     let gameData = setGameData(grandPrix, date, laps, time, placements, winner);
     gameNumber++;
@@ -182,6 +188,7 @@ function addRow(grandPrix, date, laps, time, placements, winner) {
     updateBoard(gameList, "Race")
 }
 
+// Runs whenever an html is opened (with the exception of home.html) Give it the array of games and the type of table (Race, Constructor, Driver, GenericConstructor or Generic Driver) and it will write the table using those values
 function updateBoard(array, type) {
     let tableBody = document.getElementById('statsTableBody');
     tableBody.innerHTML = '';
@@ -287,11 +294,13 @@ function updateBoard(array, type) {
     saveGameData();
 }
 
-function updatePagination(type, num) {
+// When pagination button is pressed, it runs this command, which sets the current page and updates the board
+function updatePagination(type, num) { 
     currentPage = num
     updateBoard(filteredGames, type)
 }
 
+// Creates the pagination buttons, maximum of 5 plus the back and forward arrows
 function createPaginationLinks(numPages, type) { // Might not need type
     paginationContainer = document.getElementById("paginationContainer")
     paginationContainer.innerHTML = ''
@@ -342,12 +351,14 @@ function createPaginationLinks(numPages, type) { // Might not need type
     }
 }
 
+// Assigns a runnable to the buttons created in createPaginationLinks
 function createButtonFunctionality (button, pageNumber, type) {
     button.addEventListener("click", function () {
         updatePagination(type, pageNumber);
     });
 }
 
+// Sorts the table, runs whenever a sortable column is clicked. Does different things depending on which type of sort is called (GenericConstrucor, GenericDriver)
 function sortTable(column, type) {
     let tempGames = filteredGames
     gameList = JSON.parse(localStorage.getItem('gameList')) || [];
@@ -441,7 +452,7 @@ function sortTable(column, type) {
             constructorSorted[0] = true
             constructorSorted[1] = true
         } else {
-            updateArrows(column, 'GenericDriver',true)
+            updateArrows(column, 'GenericDriver', false)
             driverArray.sort((a,b) => { 
                 if(numValuedVariables.includes(column)) {
                     let numA = parseFloat(a[column]);
@@ -466,6 +477,7 @@ function sortTable(column, type) {
     }
 }
 
+// Updates the Up and Down arrows on the sortable columns.
 function updateArrows(column, type, isUp) {
     if(type === 'GenericConstructor') {
 
@@ -501,6 +513,7 @@ function updateArrows(column, type, isUp) {
     
 }
 
+// Deletes gameList from LocalStorage
 function emptyLocalStorage() {
     if (window.confirm(" !! WARNING !! This action will delete ALL race data. Are you sure you wish to proceed?")) {
         localStorage.removeItem('gameList');
@@ -512,32 +525,30 @@ function emptyLocalStorage() {
     }
 }
 
+// Toggles the add a race menu, run when the Add new Race? button is pressed
 function toggleInputSection() {
     let inputSection = document.getElementById('inputSection');
     inputSection.style.display = (inputSection.style.display === 'none') ? 'block' : 'none';
 }
 
+// Toggles the filter date menu, run when the filter by date? button is pressed
 function filterDateRangeSection() {
     let filterSection = document.getElementById('filterRange');
     filterSection.style.display = (filterSection.style.display === 'none') ? 'block' : 'none';
 }
 
+// Used the two date values given to filter games that are not within the provided date range
 function filterGameList(type) {
     let startDate = document.getElementById('dateStart').value;
     let endDate = document.getElementById('dateEnd').value;
-    console.log(startDate + " - " + endDate)
 
     let startDateNum = parseFloat(startDate.substring(0,4) + startDate.substring(5,7) + startDate.substring(8,10));
     let endDateNum = parseFloat(endDate.substring(0,4) + endDate.substring(5,7) + endDate.substring(8,10));
-
-    console.log(startDateNum + " - " + endDateNum)
 
     let filteredGameList = gameList.filter((race) => {
         raceDate = parseFloat(race.date);
         return raceDate >= startDateNum && raceDate <= endDateNum;
     })
-
-    console.log(filteredGameList);
 
     if(startDateNum < endDateNum) {
         if(isNaN(startDate) && isNaN(startDate)) {
@@ -549,6 +560,7 @@ function filterGameList(type) {
     }
 }
 
+// Creates an array for a specific driver, each index of the array is one race. containing driver name, grand prix name, date, position and score.
 function createDriverArray(driverName, games) {
     let driverResults = [];
     
@@ -579,6 +591,7 @@ function createDriverArray(driverName, games) {
     return driverResults;
 }
 
+// Creates an array of all the drivers, each entry is a driver, which has their name, team, total points and position in the championship
 function createDriversChampionshipArray(games) { // Definitly wierd hollup
     const driversChampionship = [];
 
@@ -617,7 +630,8 @@ function createDriversChampionshipArray(games) { // Definitly wierd hollup
     return driversChampionship;
 }
 
-function createConstructorArray(constructorName, games) { // Return an array that has the points, 
+// Creates an array of a specific constructor, each index of the array is one race. containing points, driverPosition1, driver1, driverposition2, driver2, grand prix and date (I didn't end up using all of these but It allows me to access this information since i already have it, if I require in the future)
+function createConstructorArray(constructorName, games) { 
     let driversInTeam = getDriversFromTeam(constructorName);
     let constructorArray = [];
 
@@ -631,8 +645,8 @@ function createConstructorArray(constructorName, games) { // Return an array tha
             points: el.score + driver2[index].score,
             driverPosition1: el.position,
             driver1: driver1.driver,
-            driverPosition2: driver2[index].score,
-            driver2: driver2.driver,
+            driverPosition2: driver2[index].position,
+            driver2,
             grandPrix: el.grandPrix,
             date: el.date
         }
@@ -641,6 +655,7 @@ function createConstructorArray(constructorName, games) { // Return an array tha
     return constructorArray
 }
 
+// Returns an object holding the names of both drivers in a given team
 function getDriversFromTeam(team) {
     let driversInTeam = {driver1: "Null", driver2: "Null"};
     
@@ -656,6 +671,7 @@ function getDriversFromTeam(team) {
     return driversInTeam;
 }
 
+// Creates an array of all the constructors. each entry is a constructor. containing a team name, driver1, driver2, points and position
 function createConstructorChampionshipArray(games) {
     let constructorChampionshipArray = [];
 
@@ -687,12 +703,13 @@ function createConstructorChampionshipArray(games) {
     return sortedConstructorArray;
 }
 
+// calculates the total team points given two drivers
 function calculateTeamPoints(driver1, driver2, games) {
     let totalPoints = 0;
     let driver1Points = 0;
     let driver2Points = 0;
 
-    gameList.forEach((race) => {
+    games.forEach((race) => {
         race.placements.forEach((position, index) => {
             if (driver1 !== null && driver1 === position) {
                 driver1Points = scoreCalculate(index)
@@ -712,10 +729,12 @@ function calculateTeamPoints(driver1, driver2, games) {
     return totalPoints;
 }
 
+// returns the team of the driver given
 function teamCalculate(driver) {
     return driverTeams[driver] || 'N/A';
 }
 
+// returns the score value for a given position value 1 = 25, 2 = 18 and so on
 function scoreCalculate(position) { 
     points = [25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0]
     return points[position-1]
