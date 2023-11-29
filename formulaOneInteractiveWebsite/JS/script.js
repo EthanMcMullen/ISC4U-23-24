@@ -10,6 +10,10 @@ constructorFirstTime = true;
 raceFirstTime = true;
 driverFirstTime = true;
 
+let racesPerPage = 5
+let currentPage = 1
+
+
 let driverTeams = {
     'Max Verstappen': 'RedBull',
     'Sergio Perez': 'RedBull',
@@ -106,17 +110,23 @@ function addNewRace() {
         getValue('20th')
     ];
 
-    isEqual = checkIfEqual(placements);
+    isEqual = checkIfEqual(placements, winner);
     if(!isEqual) {
-        addRow(grandPrix, date, laps, time, placements, winner);
+        if (date.length === 8 && time.length === 6 && grandPrix && laps.length === 2) {
+            addRow(grandPrix, date, laps, time, placements, winner);
+        } else {
+            window.alert('Please Enter All Fields Correctly YYYYMMDD for date, HHMMSS for time, 2 Digit number for Laps, the name of the track for grand prix and each position filled')
+        }
     } 
 }
 
-function checkIfEqual(placements) {
+function checkIfEqual(placements, winner) {
     let isEqual = false;
     placements.forEach((el, index) => {
         placements.forEach((el2, index2) => {
             if(el !== 'Null' && el2 !== 'Null' && el === el2 && index !== index2) {
+                isEqual = true;
+            } else if (el === winner || el2 === winner) {
                 isEqual = true;
             }
         })
@@ -178,18 +188,24 @@ function updateBoard(array, type) {
     let minusIcon = document.createElement('i');
     minusIcon.classList.add('fa-solid', 'fa-minus');
 
+    let numGames = array.length;
+    let numPages = Math.ceil(numGames / racesPerPage);
+
     if(type === 'Race') {
-        array.forEach((race) => {
-            let newRow = document.createElement('tr');
-            insertToTable(race.gameNumber, newRow); 
-            insertToTable(race.grandPrix, newRow); 
-            insertToTable(race.winner, newRow, 'driver')
-            insertToTable(teamCalculate(race.winner), newRow, 'constructor')
-            insertToTable(race.date.substring(0,4) + "/" + race.date.substring(4,6) + "/" + race.date.substring(6,8), newRow); 
-            insertToTable(race.laps, newRow);
-            insertToTable(race.time.substring(0,2) + ":" + race.time.substring(2,4) + ":" + race.time.substring(4,6), newRow);
-            tableBody.appendChild(newRow)
-        })
+        array.forEach((race, index) => {
+            if(index >= (currentPage-1)*racesPerPage && index < currentPage*racesPerPage){
+                let newRow = document.createElement('tr');
+                insertToTable(race.gameNumber, newRow); 
+                insertToTable(race.grandPrix, newRow); 
+                insertToTable(race.winner, newRow, 'driver')
+                insertToTable(teamCalculate(race.winner), newRow, 'constructor')
+                insertToTable(race.date.substring(0,4) + "/" + race.date.substring(4,6) + "/" + race.date.substring(6,8), newRow); 
+                insertToTable(race.laps, newRow);
+                insertToTable(race.time.substring(0,2) + ":" + race.time.substring(2,4) + ":" + race.time.substring(4,6), newRow);
+                tableBody.appendChild(newRow)
+            }
+        });
+        createPaginationLinks(numPages, 'Race')
     } else if(type === 'Constructor') {
         let constructorChampionshipArray = createConstructorChampionshipArray(array);
         console.log('made it')
@@ -233,15 +249,20 @@ function updateBoard(array, type) {
         }
         
         let genericConstructorArray = createConstructorArray(constructor, array);
-        genericConstructorArray.forEach((race) => {
-            let newRow = document.createElement('tr');
-            insertToTable(race.grandPrix, newRow);
-            insertToTable(race.driverPosition1, newRow);
-            insertToTable(race.driverPosition2, newRow);
-            insertToTable(race.date.substring(0,4) + "/" + race.date.substring(4,6) + "/" + race.date.substring(6,8), newRow)
-            insertToTable(race.points, newRow);
-            tableBody.appendChild(newRow);
+        genericConstructorArray.forEach((race, index) => {
+            if(index >= (currentPage-1)*racesPerPage && index < currentPage*racesPerPage){
+                let newRow = document.createElement('tr');
+                insertToTable(race.grandPrix, newRow);
+                insertToTable(race.driverPosition1, newRow);
+                insertToTable(race.driverPosition2, newRow);
+                console.log(race.date)
+                insertToTable(race.date.substring(0,4) + "/" + race.date.substring(4,6) + "/" + race.date.substring(6,8), newRow)
+                insertToTable(race.points, newRow);
+                tableBody.appendChild(newRow);
+            }
         });    
+        createPaginationLinks(numPages, 'GenericConstructor')
+
     } else if(type === 'GenericDriver') {
         let url = window.location.search;
         let searchParams = new URLSearchParams(url);
@@ -249,19 +270,83 @@ function updateBoard(array, type) {
         document.getElementById('driverTitle').innerText = driver
         document.getElementById('driverTeam').innerText = "Constructor: " + teamCalculate(driver)
         let driverArray = createDriverArray(driver, array)
-        driverArray.forEach((race) => {
-            let newRow = document.createElement('tr');
-            insertToTable(race.grandPrix, newRow)
-            insertToTable(race.date.substring(0,4) + "/" + race.date.substring(4,6) + "/" + race.date.substring(6,8), newRow)
-            insertToTable(race.position, newRow)
-            insertToTable(race.score, newRow)
-            tableBody.appendChild(newRow)
-        })
+        driverArray.forEach((race, index) => {
+            if(index >= (currentPage-1)*racesPerPage && index < currentPage*racesPerPage){
+                let newRow = document.createElement('tr');
+                insertToTable(race.grandPrix, newRow)
+                console.log(race.date)
+                insertToTable(race.date.substring(0,4) + "/" + race.date.substring(4,6) + "/" + race.date.substring(6,8), newRow)
+                insertToTable(race.position, newRow)
+                insertToTable(race.score, newRow)
+                tableBody.appendChild(newRow)
+            }
+        });
+        createPaginationLinks(numPages, 'GenericDriver')
     }
 
     saveGameData();
 }
 
+function updatePagination(type, num) {
+    currentPage = num
+    updateBoard(filteredGames, type)
+}
+
+function createPaginationLinks(numPages, type) { // Might not need type
+    paginationContainer = document.getElementById("paginationContainer")
+    paginationContainer.innerHTML = ''
+    startCurrent = parseFloat(currentPage);
+    console.log('numpages: ' + numPages)
+
+    if(startCurrent !== 1) {
+        const button = document.createElement("button");
+        button.classList.add("button", "is-link", "is-rounded", "pagination-button");
+        button.textContent = '<';
+        createButtonFunctionality(button, (startCurrent-1), type)
+        paginationContainer.appendChild(button);
+    }
+    for(i=1; i<=numPages; i++) {
+        const button = document.createElement("button");
+        button.classList.add("button", "is-link", "is-rounded", "pagination-button");
+        if(numPages <= 5) {
+            button.textContent = i.toString();
+            createButtonFunctionality(button, i, type)
+            paginationContainer.appendChild(button);
+        } else if (startCurrent <=2){
+            if (i <= 4 || i === numPages) {
+                button.textContent = i.toString();
+                createButtonFunctionality(button, i, type)
+                paginationContainer.appendChild(button);
+            }
+        } else if (startCurrent >= (numPages-2)) {
+            if (i === 1 || (i >= (numPages-3))) {
+                button.textContent = i.toString();
+                createButtonFunctionality(button, i, type)
+                paginationContainer.appendChild(button);
+            }
+        } else {
+            if (i === 1 || ((i >= (startCurrent-1)) && (i <= (startCurrent+1))) || i === numPages) {
+                button.textContent = i.toString();
+                createButtonFunctionality(button, i, type)
+                paginationContainer.appendChild(button);
+            }
+        }
+    }
+
+    if(startCurrent !== numPages && numPages > 1) {
+        const button = document.createElement("button");
+        button.classList.add("button", "is-link", "is-rounded", "pagination-button");
+        button.textContent = '>';
+        createButtonFunctionality(button, (startCurrent+1), type)
+        paginationContainer.appendChild(button);
+    }
+}
+
+function createButtonFunctionality (button, pageNumber, type) {
+    button.addEventListener("click", function () {
+        updatePagination(type, pageNumber);
+    });
+}
 
 function sortTable(column, type) {
     let tempGames = filteredGames
@@ -422,14 +507,8 @@ function emptyLocalStorage() {
         localStorage.removeItem('gameNumber')
         gameNumber = 1;
         gameList = [];
+        filteredGames = gameList
         updateBoard(gameList, "Race");
-    }
-}
-
-function deleteRace(index) { /* work in progress */
-    if (window.confirm("Are you sure you want to delete this race?")) {
-        gameList.splice(index, 1);
-        reWriteTable(gameList);
     }
 }
 
@@ -640,18 +719,4 @@ function teamCalculate(driver) {
 function scoreCalculate(position) { 
     points = [25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0]
     return points[position-1]
-}
-
-function debugSave() {
-    if(window.confirm("Do you wish to backup Game list")) {
-        let backupGameList = gameList;
-        console.log(backupGameList)
-        localStorage.setItem('backupGameList', JSON.stringify(backupGameList));
-    }
-}
-
-function debugLoad() {
-    if(window.confirm("Do you wish to load Game list")) {
-        gameList = JSON.parse(localStorage.getItem('backupGameList')) || [];
-    }
 }

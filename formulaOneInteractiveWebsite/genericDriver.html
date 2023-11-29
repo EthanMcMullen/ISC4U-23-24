@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="CSS/style.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
   <title>Race Stats</title>
 </head>
@@ -87,19 +87,27 @@
         <thead>
           <tr>
             <th class="number-table-header table-header"><button class="stat-button numberButton">GrandPrix:</button></th>
-            <th class="race-table-header table-header"><button class="stat-button numberButton"onclick="sortTable('date', 'GenericDriver') ">Date: <i class="fa-solid fa-minus" id="date"></i></button></th>
-            <th class="winner-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('position', 'GenericDriver')">Position: <i class="fa-solid fa-minus" id="position"></i></button></th>
-            <th class="date-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('score', 'GenericDriver')" >Points: <i class="fa-solid fa-minus" id="score"></i></button></th>
+            <th class="date-table-header table-header"><button class="stat-button numberButton"onclick="sortTable('date', 'GenericDriver') ">Date: <i class="fa-solid fa-minus" id="date"></i></button></th>
+            <th class="position-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('position', 'GenericDriver')">Position: <i class="fa-solid fa-minus" id="position"></i></button></th>
+            <th class="points-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('score', 'GenericDriver')" >Points: <i class="fa-solid fa-minus" id="score"></i></button></th>
           </tr>
         </thead>
         <tbody id="statsTableBody">
         </tbody>
       </table>
 
+      <section class="hero is-link mt-6">
+        <div class="hero-body">
+            <div id="paginationContainer" class="pagination-container">
+              
+            </div>
+        </div>
+      </section>
+
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script src="JS/script.js"></script>
 
 </body>
 </html>

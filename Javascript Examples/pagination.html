@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+
+
+    <table id="standings" class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>W</th>
+                <th>L</th>
+                <th>PTS</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <ul id="pagination" class="pagination-list">
+        </ul>
+      </nav>
+</body>
+
+<script>
+    const teams = [
+        {Name:"Maple Leafs", W:3, L:2, PTS:6},
+        {Name:"Canadians", W:2, L:3, PTS:4},
+        {Name:"Team Ethan", W:2, L:2, PTS:4},
+        {Name:"Team Max", W:0, L:6, PTS:0},
+        {Name:"Team Jad", W:0, L:6, PTS:0},
+        {Name:"Maple Leafs", W:3, L:2, PTS:6},
+        {Name:"Canadians", W:2, L:3, PTS:4},
+        {Name:"Team Ethan", W:2, L:2, PTS:4},
+        {Name:"Team Max", W:0, L:6, PTS:0},
+        {Name:"Team Jad", W:0, L:6, PTS:0},
+        {Name:"Maple Leafs", W:3, L:2, PTS:6},
+        {Name:"Canadians", W:2, L:3, PTS:4},
+        {Name:"Team Ethan", W:2, L:2, PTS:4},
+        {Name:"Team Max", W:0, L:6, PTS:0},
+        {Name:"Team Jad", W:0, L:6, PTS:0}
+    ]
+
+    const num_teams = teams.length;
+
+    console.log(num_teams)
+    num_teams_per_page = 2;
+    curr_page = 3;
+    max_page = num_teams % num_teams_per_page == 0 ? num_teams / num_teams_per_page : (num_teams / num_teams_per_page) + 1;
+
+    function updateStandings(teamArr){
+        const tbody = document.querySelector('tbody')
+        teams_curr_page = teamArr.slice((curr_page-1)*num_teams_per_page, (curr_page-1)*num_teams_per_page+num_teams_per_page)
+
+        teams_curr_page.forEach(team => {
+            let tr = document.createElement('tr')
+            
+            let td = document.createElement('td')
+            td.textContent = team.Name
+            tr.appendChild(td)
+
+            td = document.createElement('td')
+            td.textContent = team.W
+            tr.appendChild(td)
+
+            td = document.createElement('td')
+            td.textContent = team.L
+            tr.appendChild(td)
+
+            td = document.createElement('td')
+            td.textContent = team.PTS
+            tr.appendChild(td)
+
+            tbody.append(tr)
+        })
+    }
+
+
+    function updatePagination(){
+        const ul = document.querySelector("#pagination");
+        for(let page = 1; page<=max_page; page++){
+            const li = document.createElement('li');
+            li.innerHTML = `<a class="pagination-link" aria-label="Goto page ${page}">${page}</a>`
+            ul.append(li);
+        }
+
+    }
+
+    
+
+    updatePagination();
+    // function updateDropDown(teamArr){
+    //     const tbody = document.querySelector('.dropdown-content')
+        
+    //     for (let index = 0; index < teamArr.length; index++) {
+    //         const team = teamArr[index];
+            
+    //         let option = document.createElement('a')
+
+    //         option.classList.add('dropdown-item')
+    //         option.textContent = team.Name
+    //         option.setAttribute('href', '#')
+    //         tbody.appendChild(option)
+    //     }
+        
+    // }
+
+
+    //updateDropDown(teams)
+    updateStandings(teams)
+    
+</script>
+
+</html>

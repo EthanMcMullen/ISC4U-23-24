@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="CSS/style.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
   <title>Race Stats</title>
 </head>
@@ -633,8 +633,6 @@
               </div>
               </div>
         <button class="button mb-2 mt-2 is-danger" onclick="emptyLocalStorage()">Delete all race Data?</button>
-        <button class="button mb-2 mt-2 is-info" onclick="debugSave()">Debug Save</button>
-        <button class="button mb-2 mt-2 is-link" onclick="debugLoad()">Debug Load</button>
         <button class="button is-primary add-race-border" onclick="addNewRace()">Submit</button>
 
       </div>
@@ -668,14 +666,24 @@
             <th class="time-table-header table-header"><button class="stat-button numberButton" onclick="sortTable('time', 'Race')">Time: <i class="fa-solid fa-minus" id="tabletime"></i></button></th>
           </tr>
         </thead>
+        
+        
         <tbody id="statsTableBody">
         </tbody>
       </table>
 
+      <section class="hero is-link mt-6">
+        <div class="hero-body">
+            <div id="paginationContainer" class="pagination-container">
+              
+            </div>
+        </div>
+      </section>
+
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script src="JS/script.js"></script>
 
 </body>
 </html>

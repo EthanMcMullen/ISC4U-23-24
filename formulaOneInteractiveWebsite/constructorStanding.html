@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="CSS/style.css"> 
   <title>Race Stats</title>
 </head>
 <body onload="updateBoard(gameList, 'Constructor')">
@@ -63,11 +63,11 @@
       <table class="table is-bordered is-fullwidth mt-3">
         <thead>
           <tr>
-            <th class="number-table-header table-header"><button class="stat-button numberButton">Position:</button></th>
-            <th class="race-table-header table-header"><button class="stat-button numberButton">Constructor Name:</button></th>
-            <th class="winner-table-header table-header"><button class="stat-button numberButton">Driver 1:</button></th>
-            <th class="constructor-table-header table-header"><button class="stat-button numberButton">Driver 2:</button></th>
-            <th class="date-table-header table-header"><button class="stat-button numberButton">Points:</button></th>
+            <th class="position-table-header table-header"><button class="stat-button numberButton">Position:</button></th>
+            <th class="constructor-table-header table-header"><button class="stat-button numberButton">Constructor Name:</button></th>
+            <th class="driver1-table-header table-header"><button class="stat-button numberButton">Driver 1:</button></th>
+            <th class="driver2-table-header table-header"><button class="stat-button numberButton">Driver 2:</button></th>
+            <th class="points-table-header table-header"><button class="stat-button numberButton">Points:</button></th>
           </tr>
         </thead>
         <tbody id="statsTableBody">
@@ -77,7 +77,7 @@
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script src="JS/script.js"></script>
 
 </body>
 </html>
